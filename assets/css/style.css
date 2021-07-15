@@ -1,0 +1,10 @@
+/* Used to center searchbar - temporary, just to demonstrate functionality */
+
+#container {
+    height: 100vh;
+    justify-content: center;
+}
+
+#searchCard {
+    width: 70%;
+}
