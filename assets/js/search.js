@@ -2,13 +2,13 @@ var resultsEl = document.getElementById("results");
 
 // During production and testing, replace with your own key please :)
 // Made it global so it can be accessed by the
-const API_KEY = "57046b00";
+const OMBD_API_KEY = "57046b00";
 
 // Call OMDb API to get movie data for a search term
 async function searchMovie(searchTerm) {
     
   // Create a search request URI with a given search term
-  const QUERY_URI = `https://www.omdbapi.com/?s=${searchTerm}&apikey=${API_KEY}`;
+  const QUERY_URI = `https://www.omdbapi.com/?s=${searchTerm}&apikey=${OMBD_API_KEY}`;
 
   // Attempt to fetch data asynchronously ("await") for the searchTerm
   var result = await fetch(QUERY_URI)
@@ -54,7 +54,7 @@ var getPostersInfo = function (results) {
   // Loops through the results and return more information about each returned title with a max of 8
   for (let i = 0; i < results.length && i < 8; i++) {
     // Create a search request URI for each returned title
-    var requestUrl = `https://www.omdbapi.com/?t=${results[i].Title}&apikey=${API_KEY}`;
+    var requestUrl = `https://www.omdbapi.com/?t=${results[i].Title}&apikey=${OMBD_API_KEY}`;
 
     // Makes an api call for the given title
     fetch(requestUrl)
