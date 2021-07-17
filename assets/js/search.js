@@ -4,9 +4,9 @@ var resultsEl = document.getElementById("results");
 // Made it global so it can be accessed by the
 const OMBD_API_KEY = "57046b00";
 
+
 // Call OMDb API to get movie data for a search term
 async function searchMovie(searchTerm) {
-    
   // Create a search request URI with a given search term
   const QUERY_URI = `https://www.omdbapi.com/?s=${searchTerm}&apikey=${OMBD_API_KEY}`;
 
@@ -86,9 +86,13 @@ var renderPosterCards = function (data) {
            <i class="material-icons tiny">fiber_manual_record</i>
            ${data.Runtime}
             <i class="material-icons right">arrow_upward</i></span>
+            <div class="card-action trailerLink">
+              <a data-title='${data.Title}' class="blue-text" href="#">Watch Trailer</a>
+            </div>
         </div>
 
         <div class="card-reveal">
+
           <span class="card-title grey-text text-darken-4">${data.Title}  <i class="material-icons right">close</i></span>
           <p>Genre: ${data.Genre}</p><br />
           <p>${data.Plot}</p><br />
@@ -99,6 +103,17 @@ var renderPosterCards = function (data) {
       </div>`;
   }
 };
+
+var trailerLinkClickHandler = function(event){
+  var movieTitle = event.target.getAttribute('data-title');
+  if(movieTitle){
+    window.location = `./trailer.html?q=${movieTitle}`
+  }
+}
+
+
+
+resultsEl.addEventListener('click', trailerLinkClickHandler)
 
 // Single function call to set up webpage
 init();
