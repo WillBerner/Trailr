@@ -45,6 +45,9 @@ async function init() {
   // Adds a random "movies" background
   document.body.style.backgroundImage = `url('https://source.unsplash.com/1600x900/?movie')`;
 
+  // Adds event listener for clicking on a movie trailer
+  resultsEl.addEventListener('click', trailerLinkClickHandler);
+
   // Calls the getPostersInfo function and pass the results
   getPostersInfo(results);
 }
@@ -104,16 +107,17 @@ var renderPosterCards = function (data) {
   }
 };
 
+// This function directs the user to a new page with a trailer for the movie
 var trailerLinkClickHandler = function(event){
+
+  // Get title of movie from its html data-attribute
   var movieTitle = event.target.getAttribute('data-title');
+
+  // If the user actually clicked on a trailer, redirect to it.
   if(movieTitle){
     window.location = `./trailer.html?q=${movieTitle}`
   }
 }
-
-
-
-resultsEl.addEventListener('click', trailerLinkClickHandler)
 
 // Single function call to set up webpage
 init();

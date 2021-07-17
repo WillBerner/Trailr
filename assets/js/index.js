@@ -29,6 +29,13 @@ function init() {
   // Adds a random "movies" background
   document.body.style.backgroundImage = `url('https://source.unsplash.com/1600x900/?movie')`;
 
+  // Adds the event handler for the search button
+  searchButton.addEventListener("click", searchBarHandler);
+
+  // Listens to an 'Enter' key for the form to accept input on the keyup
+  searchInputEl.addEventListener("keyup", enterKeyHandler);
+
+
 }
 
 var searchBarHandler = function () {
@@ -45,12 +52,6 @@ var enterKeyHandler = function (event) {
     searchBarHandler();
   }
 };
-
-// Adds the event handler for the search button
-searchButton.addEventListener("click", searchBarHandler);
-
-// Listens to an 'Enter' key for the form to accept input on the keyup
-searchInputEl.addEventListener("keyup", enterKeyHandler);
 
 // Single function call to set up webpage
 init();
