@@ -1,5 +1,4 @@
-var searchButton = document.getElementById("searchButton");
-var searchInputEl = document.getElementById("searchInput");
+// JS FOR HOME PAGE 
 
 // Get any previous movie search terms the user has already used
 // Nonfunctional currently, for future use.
@@ -26,14 +25,22 @@ function init() {
   // Get previous search terms (nonfunctional currently, for future use)
   var prevSearches = loadPreviousSearches();
 
-  // Adds a random "movies" background
-  document.body.style.backgroundImage = `url('https://source.unsplash.com/1600x900/?movie')`;
+  // Adds a random movie as the background using jQuery
+  $(`body`).css(`backgroundImage`, `url('https://source.unsplash.com/1600x900/?movie')`);
+
+  // Adds the event handler for the search button using jQuery
+  $(`#searchButton`).on("click", searchBarHandler);
+
+  // Listens for the 'Enter' key being pressed rather than a button click
+  $(`#searchInput`).on("keyup", enterKeyHandler);
 
 }
 
+// Redirect the user to the results page w/ current search term
 var searchBarHandler = function () {
-  // Get the current value of the search text-input
-  var searchTerm = searchInputEl.value;
+
+  // Get the current value of the search text-input using jQuery
+  var searchTerm = $(`#searchInput`).val();
 
   // redirect the user to the new page with a parameter of the search term
   window.location = `./search.html?q=${searchTerm}`;
@@ -45,12 +52,6 @@ var enterKeyHandler = function (event) {
     searchBarHandler();
   }
 };
-
-// Adds the event handler for the search button
-searchButton.addEventListener("click", searchBarHandler);
-
-// Listens to an 'Enter' key for the form to accept input on the keyup
-searchInputEl.addEventListener("keyup", enterKeyHandler);
 
 // Single function call to set up webpage
 init();

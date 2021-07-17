@@ -1,7 +1,7 @@
-var resultsEl = document.getElementById("results");
+// JS FOR RESULTS PAGE
 
 // During production and testing, replace with your own key please :)
-// Made it global so it can be accessed by the
+// Keep it global so it can be accessed by all functions using API calls
 const OMBD_API_KEY = "57046b00";
 
 // Call OMDb API to get movie data for a search term
@@ -27,7 +27,9 @@ async function searchMovie(searchTerm) {
   return result.Search;
 }
 
+// This function gets the search parameters from the URI and searches them
 async function getSearchedMovie() {
+
   // Get search term from URL parameters
   var url = new URL(window.location.href);
   var searchTerm = url.searchParams.get("q");
@@ -39,41 +41,48 @@ async function getSearchedMovie() {
 // Call all set up functions inside here - event handlers, element creation, other page setup
 // Must be asynchronous in order to use await keyword for awaiting API response
 async function init() {
+  
   // Get results for the searched term
   var results = await getSearchedMovie();
 
-  // Adds a random "movies" background
-  document.body.style.backgroundImage = `url('https://source.unsplash.com/1600x900/?movie')`;
-
-  // Calls the getPostersInfo function and pass the results
+  // Adds a random movie as the background using jQuery
+  $(`body`).css(`backgroundImage`, `url('https://source.unsplash.com/1600x900/?movie')`);
+  
+  // Get more info for each individual result from the search
   getPostersInfo(results);
 }
 
-// This function will make an api call for each title resulted in the original search
+// This function makes an api call for each title returned in the original search
 var getPostersInfo = function (results) {
-  // Loops through the results and return more information about each returned title with a max of 8
+
+  // Loops through the results and returns more information about each returned title with a max of 8
   for (let i = 0; i < results.length && i < 8; i++) {
+
     // Create a search request URI for each returned title
     var requestUrl = `https://www.omdbapi.com/?t=${results[i].Title}&apikey=${OMBD_API_KEY}`;
 
     // Makes an api call for the given title
     fetch(requestUrl)
+
       // Gets a JSON object containing the data needed
       .then((response) => response.json())
 
-      // Once gets the data calls renderPosterCards
+      // Calls a function to render each movie object to the page as a card
       .then((data) => renderPosterCards(data))
+
       // Log any errors that occur
       .catch((error) => console.log(error));
   }
 };
 
-// This function will render a card for each movie title returned
+// This function renders a card for each movie title returned
 var renderPosterCards = function (data) {
-  // Checks if there is an error with any of the movie objects returned then skip that movie from the render
+
+  // Checks if there is an error with any of the movie objects returned and if so, skips rendering that movie
   if (!data.Error) {
+
     // Injects a card for each movie title with it's title, poster, year, actors etc
-    resultsEl.innerHTML += `
+    $(`#results`).append(`
        <div class="col s12 m3">
         <div class="card large">
         <div class="card-image waves-effect waves-block waves-light">
@@ -96,7 +105,7 @@ var renderPosterCards = function (data) {
           <p>IMDB Rating: ${data.imdbRating}</p>
         </div>
       </div>
-      </div>`;
+      </div>`);
   }
 };
 
