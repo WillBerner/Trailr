@@ -47,7 +47,7 @@ var renderVideoPlayer = function (videoId) {
   document.getElementById("player").innerHTML = `
 
   <iframe class="z-depth-5 hoverable valign-wrapper" type="text/html" width="1280" height="720"
-     src="http://www.youtube.com/embed/${videoId}?enablejsapi=1&origin=http://example.com"
+     src="https://www.youtube.com/embed/${videoId}?enablejsapi=1&origin=https://example.com"
      frameborder="0" allowfullscreen>
   </iframe>
 
