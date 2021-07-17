@@ -8,3 +8,11 @@
 #searchCard {
     width: 70%;
 }
+
+iframe {
+    margin: 0 auto
+}
+
+body {
+    background-size: cover;
+}
