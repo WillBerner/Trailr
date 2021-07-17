@@ -128,7 +128,7 @@ var pageReturn = function () {
 // Adds the event handler for the back button
 backButton.onclick = ()=>{
   pageReturn();
-  console.log("click")
+  console.log("click");
 }
 
 // Single function call to set up webpage
