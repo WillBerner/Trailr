@@ -1,6 +1,7 @@
 var searchButton = document.getElementById("searchButton");
 var searchInputEl = document.getElementById("searchInput");
 
+
 // Get any previous movie search terms the user has already used
 // Nonfunctional currently, for future use.
 function loadPreviousSearches() {
