@@ -1,4 +1,5 @@
 var resultsEl = document.getElementById("results");
+var backButton = document.getElementById("backButton");
 
 // During production and testing, replace with your own key please :)
 // Made it global so it can be accessed by the
@@ -110,8 +111,17 @@ var trailerLinkClickHandler = function(event){
     window.location = `./trailer.html?q=${movieTitle}`
   }
 }
+// Function to return to search page on click of back button
+var pageReturn = function () {
+  window.location = "./index.html";
+  console.log("click");
+};
 
-
+// Adds the event handler for the back button
+backButton.onclick = ()=>{
+  pageReturn();
+  console.log("click")
+}
 
 resultsEl.addEventListener('click', trailerLinkClickHandler)
 
