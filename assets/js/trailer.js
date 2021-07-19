@@ -1,6 +1,8 @@
 // During production and testing, replace with your own key please :)
 const YOUTUBE_API_KEY = "AIzaSyBGxVo7_RMKBhuuaFv46AYeAQbw1U7uquE";
-const OMBD_API_KEY = "57046b00";
+// const OMBD_API_KEY = "57046b00";
+const OMBD_API_KEY = "7948297a";
+
 
 // Call YouTube API to get the movie trailer Id for a movie title
 async function searchTrailer(movieTitle) {
