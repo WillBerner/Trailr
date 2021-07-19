@@ -1,28 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Results</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Info</title>
     <!-- Linking Materialize Icons Library -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
 
     <!-- Linking Materialize CSS Library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
 
     <!-- Linking custom CSS stylesheet -->
-    <link rel="stylesheet" href="./assets/css/style.css">
-</head>
-<body >
-    
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
 
-    <!-- Currently dynamically populated by the javascript in trailer.js -->
-    <div id="player" ></div>
-    
+  <body>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo center">Logo</a>
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+          <li><a href="./search.html">Back to results</a></li>
+        </ul>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="./index.html">Return home</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container row">
+      <image class="z-depth-1"
+        src="https://m.media-amazon.com/images/M/MV5BMDVlOWFlYWQtZDdjYS00MWI2LTk2MzUtYjg1N2QyOGIwZDIzXkEyXkFqcGdeQXVyNzQwMTExNDA@._V1_SX300.jpg" 
+      ></image>
+      <div class="right col s8">
+        <h3 id="title">The Boss Baby: Back in Business</h3>
+        <h6 id="movie-info">Movie info <br>Date: 2021<br>IMDB Rating: 6.5<br> Actors: JP Karliak, David W. Collins, Flula Borg </h6>
+        <h6 id="movie-summary">With a little help from his brother and accomplice, Tim, Boss Baby tries to balance family life with his job at Baby Corp headquarters.</h6>
+      </div>
+      <!-- Currently dynamically populated by the javascript in trailer.js -->
+      <div class="center"  id="player">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/6R2o-RVC1cM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+      </div>
+    </div>
+
     <!-- Linking our script -->
     <script src="./assets/js/trailer.js"></script>
     <!-- Linking Materialize JS Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-</body>
+  </body>
 </html>

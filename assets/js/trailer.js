@@ -22,6 +22,24 @@ async function searchTrailer(movieTitle) {
   renderVideoPlayer(result.items[0].id.videoId);
 }
 
+
+// -------------------------------------------------------------------------
+var getPostersInfo = function (results) {
+      // Create a search request URI for each returned title
+      var requestUrl = `https://www.omdbapi.com/?t=${results[i].Title}&apikey=${OMBD_API_KEY}`;
+  
+      // Makes an api call for the given title
+      fetch(requestUrl)
+        // Gets a JSON object containing the data needed
+        .then((response) => response.json())
+  
+        // Once gets the data calls renderPosterCards
+        .then((data) => renderPosterCards(data))
+        // Log any errors that occur
+        .catch((error) => console.log(error));
+   
+  };
+
 async function getSearchedTrailer() {
   // Get movie title from URL parameters
   var url = new URL(window.location.href);
@@ -36,9 +54,7 @@ async function getSearchedTrailer() {
 async function init() {
   // Get results for the searched term
   var movieTitle = await getSearchedTrailer();
-
-  // Adds a random "movies" background
-  document.body.style.backgroundImage = `url('https://source.unsplash.com/1600x900/?movie')`;
+  var results
 
 }
 
@@ -46,7 +62,7 @@ async function init() {
 var renderVideoPlayer = function (videoId) {
   document.getElementById("player").innerHTML = `
 
-  <iframe class="z-depth-5 hoverable valign-wrapper" type="text/html" width="1280" height="720"
+  <iframe class="hoverable" type="text/html" width="640" height="360"
      src="https://www.youtube.com/embed/${videoId}?enablejsapi=1&origin=https://example.com"
      frameborder="0" allowfullscreen>
   </iframe>
