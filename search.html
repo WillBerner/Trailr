@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,29 +11,45 @@
     <!-- Linking custom CSS stylesheet -->
     <link rel="stylesheet" href="./assets/css/style.css">
 
-     <!-- Linking jQuery Library -->
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <title>Search Results</title>
     <!-- Linking Materialize Icons Library -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Linking Materialize CSS Library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <title>Search Results</title>
+
 </head>
+
 <body>
-    
+
+    <!-- Header Element -->
+    <header>
+        <header>
+            <nav>
+                <div class="nav-wrapper blue-grey darken-1">
+                  <a href="#" class="brand-logo center">Traileremma</a>
+                  <ul id="nav-mobile" class="left">
+                    <li><a href="./index.html">Back Home</a></li>
+                  </ul>
+                </div>
+              </nav>
+        </header>
+    </header>
 
     <!-- Currently dynamically populated by the javascript in search.js -->
     <div id="results" class='row'></div>
-    <div id="filter"></div>
     <br>
+
     <!-- Back Button -->
     <a class="waves-effect waves-light btn btn-large" id="backButton">Back</a>
 
     <!-- Linking our script -->
     <script src="./assets/js/search.js"></script>
+
     <!-- Linking Materialize JS Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
 </body>
+
 </html>

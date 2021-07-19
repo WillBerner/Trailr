@@ -47,6 +47,9 @@ async function init() {
   // Adds a random "movies" background
   document.body.style.backgroundImage = `url('https://source.unsplash.com/1600x900/?movie')`;
 
+  // Adds event listener for clicking on a movie trailer
+  resultsEl.addEventListener('click', trailerLinkClickHandler);
+
   // Calls the getPostersInfo function and pass the results
   getPostersInfo(results);
 }
@@ -72,8 +75,9 @@ var getPostersInfo = function (results) {
 
 // This function will render a card for each movie title returned
 var renderPosterCards = function (data) {
+  console.log(data);
   // Checks if there is an error with any of the movie objects returned then skip that movie from the render
-  if (!data.Error) {
+  if (!data.Error && data.Poster !== "N/A") {
     // Injects a card for each movie title with it's title, poster, year, actors etc
     if(data.imdbRating > 8){
       console.log(data.movieTitle);
@@ -109,8 +113,13 @@ var renderPosterCards = function (data) {
   }
 };
 
+// This function directs the user to a new page with a trailer for the movie
 var trailerLinkClickHandler = function(event){
+
+  // Get title of movie from its html data-attribute
   var movieTitle = event.target.getAttribute('data-title');
+
+  // If the user actually clicked on a trailer, redirect to it.
   if(movieTitle){
     window.location = `./trailer.html?q=${movieTitle}`
   }
@@ -124,10 +133,8 @@ var pageReturn = function () {
 // Adds the event handler for the back button
 backButton.onclick = ()=>{
   pageReturn();
-  console.log("click")
+  console.log("click");
 }
-
-resultsEl.addEventListener('click', trailerLinkClickHandler)
 
 // Single function call to set up webpage
 init();
