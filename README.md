@@ -1,6 +1,6 @@
 # Bootcamp-Project-1
 
-A basic web application for searching, filtering, and sorting movies. Created with jQuery, data pulled from the OMDb API, and styled with Materialize.
+A basic web application for searching, filtering, and sorting movies. Created with data pulled from the OMDb API and styled with Materialize.
 
 Created for UNC-CH's 2021 Full Stack Coding Bootcamp by Will Berner, Muiasar Al Ani, Casey Twine, and Zach Holloway.
 
