@@ -18,6 +18,7 @@ async function searchMovie(searchTerm) {
 
     // Return the actual data we care about (stored in result variable)
     .then((data) => {
+      console.log(data);
       return data;
     })
 
@@ -74,6 +75,9 @@ var renderPosterCards = function (data) {
   // Checks if there is an error with any of the movie objects returned then skip that movie from the render
   if (!data.Error) {
     // Injects a card for each movie title with it's title, poster, year, actors etc
+    if(data.imdbRating > 8){
+      console.log(data.movieTitle);
+    }
     resultsEl.innerHTML += `
        <div class="col s12 m3">
         <div class="card large">
