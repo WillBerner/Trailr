@@ -76,7 +76,7 @@ var getPostersInfo = function (results) {
 // This function will render a card for each movie title returned
 var renderPosterCards = function (data) {
   // Checks if there is an error with any of the movie objects returned then skip that movie from the render
-  var ratingFilter = 5;
+  var ratingFilter = 4;
 
   if (!data.Error && data.Poster !== "N/A") {
     // Injects a card for each movie title with it's title, poster, year, actors etc
