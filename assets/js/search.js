@@ -49,8 +49,6 @@ async function init() {
   // Adds event listener for clicking on a movie trailer
   resultsEl.addEventListener('click', trailerLinkClickHandler);
 
-
-
   // Checks if Api call returned results object otherwise this means that the movie was not found
   if(results){
     // If got results object call getPostersInfo and pass the results
