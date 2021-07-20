@@ -25,9 +25,13 @@ function loadPreviousSearches() {
 // Call all set up functions inside here - event handlers, element creation, other page setup
 function init() {
 
+  // Get not found key-word from the URL 
   var url = new URL(window.location.href);
   var notFound = url.searchParams.get("q")
+
+  // Checks if the URL ends with not found key word
   if(notFound === 'not-found'){
+    // Replaces the input placeholder with this warning and prompts for entering another title 
     searchInputEl.placeholder = 'There was no movie with this title please enter another movie title!'
   }
 
