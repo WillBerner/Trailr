@@ -89,23 +89,11 @@ var renderPosterCards = function (data) {
         </div>
 
         <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">${data.Title}<br/>
-           ${data.Year}
-           <i class="material-icons tiny">fiber_manual_record</i>
-           ${data.Runtime}
-            <i class="material-icons right">arrow_upward</i></span>
-            <div class="card-action trailerLink">
-              <a data-title='${data.Title}' class="blue-text" href="#">Watch Trailer</a>
-            </div>
+          <h6 class="grey-text text-darken-4">${data.Title}: ${data.Year}</h6>
+          <h6 > ${data.Runtime} </h6>
         </div>
-
-        <div class="card-reveal">
-
-          <span class="card-title grey-text text-darken-4">${data.Title}  <i class="material-icons right">close</i></span>
-          <p>Genre: ${data.Genre}</p><br />
-          <p>${data.Plot}</p><br />
-          <p>Actors: ${data.Actors}</p><br />
-          <p>IMDB Rating: ${data.imdbRating}</p>
+        <div class="card-action trailerLink">
+              <a data-title='${data.Title}' class="blue-text" href="#">Watch Trailer</a>
         </div>
       </div>
       </div>`;
