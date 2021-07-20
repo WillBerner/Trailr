@@ -1,63 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Movie Info</title>
-    <!-- Linking Materialize Icons Library -->
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
 
-    <!-- Linking Materialize CSS Library -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Movie Info</title>
+  <!-- Linking Materialize Icons Library -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 
-    <!-- Linking custom CSS stylesheet -->
-    <link rel="stylesheet" href="./assets/css/style.css" />
-  </head>
+  <!-- Linking Materialize CSS Library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+
+  <!-- Linking custom CSS stylesheet -->
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
 
 
-  
-  <body>
 
-    <nav>
-      <div class="nav-wrapper blue-grey darken-1">
-        <a href="#" class="brand-logo center">Traileremma</a>
-        <ul id="nav-mobile" class="left hide-on-med-and-down">
-          <li><a href="./search.html">Back to results</a></li>
-        </ul>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="./index.html">Return home</a></li>
+<body>
+
+  <header class="navbar-fixed">
+    <nav id="navbar">
+      <div class="nav-wrapper blue-grey darken-1 valign-wrapper">
+        <a href="./" class="brand-logo center">Traileremma</a>
+        <ul id="backButton" class="left">
+          <li id="backToResultsButton"><a>Back to Results</a></li>
         </ul>
       </div>
     </nav>
-    
-    <div class="container row">
-      <image id="poster" class="z-depth-1"
-        src="" 
-      ></image>
-      <div class="right col s8">
-        <h3 id="title"></h3>
-        <h6 id="movie-info"></h6>
-        <h6 id="movie-summary"></h6>
+  </header>
+
+  <div class="container" id="movieContainer">
+    <div class="row center-align valign-wrapper">
+
+      <div class="col s3 center-align" id="posterColumn">
+        <img id="poster" class="responsive-img" src="" class="z-depth-1">
+      </div>
+
+      <div class="col s8 left-align center" id="infoColumn">
+        
+          <div class="row valign-wrapper center-align">
+            <h3 class="col s9" id="title"></h3>
+            <div class="card left-align" id="rating-card">
+              <h4 class="card-title col s3" id="rating"></h4>
+            </div>
+          </div>
+
+          <div class="center">
+            <h5 id="movie-info"></h5>
+          </div>
+        <h6 id="movie-data"></h6>
         <div id="streaming-services">
           <a id="netflix" class="waves-effect waves-light"><img height="40px" src="./assets/images/netflix_icon.png"></a>
           <a id="imdb" class="waves-effect waves-light"><img height="40px" src="./assets/images/imdb_icon.png"></a>
         </div>
       </div>
-      <!-- Currently dynamically populated by the javascript in trailer.js -->
-      <div class="center"  id="player"></div>
+
+    </div>
+    <div class="row center-align" id="trailerContainer">
+      <div class="center" id="player"></div>
     </div>
 
-    <!-- Linking our script -->
-    <script src="./assets/js/trailer.js"></script>
+    <div class="row left-align" id="infoRow">
 
-    <!-- Linking Materialize JS Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  </body>
+      <h4 class="col s12" >Movie Info</h4>
+      <div class="row left-align">
+        <div class="row center-align">
+          <h5>Plot:</h5>
+          <h6 id="movie-summary" class="col s12 card"></h6>
+        </div>
+        <div class="col s12">
+          <div class="">
+            <h6 id="info-rating"></h6>
+            <h6 id="info-genre"></h6>
+            <h6 id="info-director"></h6>
+            <h6 id="info-writer"></h6>
+            <h6 id="info-language"></h6>
+            <h6 id="info-released"></h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Linking our script -->
+  <script src="./assets/js/trailer.js"></script>
+
+  <!-- Linking Materialize JS Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</body>
+
 </html>

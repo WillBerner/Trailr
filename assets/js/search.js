@@ -89,8 +89,8 @@ var renderPosterCards = function (data) {
           <h6 class="grey-text text-darken-4">${data.Title}: ${data.Year}</h6>
           <h6 > ${data.Runtime} </h6>
         </div>
-        <div class="card-action trailerLink">
-              <a data-title='${data.Title}' class="blue-text" href="#">Watch Trailer</a>
+        <div class="card-action trailerLink center-align">
+              <a data-title='${data.Title}' class="blue-text" href="#">View</a>
         </div>
       </div>
       </div>`;
