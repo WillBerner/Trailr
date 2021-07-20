@@ -20,3 +20,32 @@ body {
 #netflix, #imdb {
     display: none;
 } 
+#menuCardRow {
+    margin-top: 5%;
+    margin-left: 2%;
+}
+
+#menuCard {
+    border-radius: 20px;
+}
+
+#resultsDiv {
+    margin-top: 5%;
+    margin-left: 3%;
+}
+
+#navbar {
+    height: 100px;
+}
+
+#backButton {
+    margin-left: 2%;
+}
+
+#menuTitle {
+    margin-bottom: 10%;
+}
+
+.filterTitle {
+    margin: 0;
+}
