@@ -16,3 +16,7 @@ iframe {
 body {
     background-size: cover;
 }
+
+#netflix, #imdb {
+    display: none;
+} 
