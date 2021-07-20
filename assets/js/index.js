@@ -25,6 +25,12 @@ function loadPreviousSearches() {
 // Call all set up functions inside here - event handlers, element creation, other page setup
 function init() {
 
+  var url = new URL(window.location.href);
+  var notFound = url.searchParams.get("q")
+  if(notFound === 'not-found'){
+    searchInputEl.placeholder = 'There was no movie with this title please enter another movie title!'
+  }
+
   // Get previous search terms (nonfunctional currently, for future use)
   var prevSearches = loadPreviousSearches();
 
