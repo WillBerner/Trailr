@@ -35,7 +35,7 @@ body {
 }
 
 #navbar {
-    height: 100px;
+    height: 10%;
 }
 
 #backButton {
@@ -48,4 +48,29 @@ body {
 
 .filterTitle {
     margin: 0;
+}
+
+#movieContainer {
+    position: relative;
+    top: 50px;
+}
+
+#posterColumn {
+    margin-left: 2%;
+}
+
+#trailerContainer {
+    margin: 3%;
+    border-bottom: 10px solid black;
+    border-top: 10px solid black;
+}
+
+#rating-card {
+    border-radius: 10px;
+    margin: 20px;
+}
+
+#movie-summary {
+    margin: 10px;
+    padding: 20px;
 }

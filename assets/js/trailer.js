@@ -2,9 +2,9 @@ var netflixLink = document.getElementById("netflix");
 var imdbLink = document.getElementById("imdb");
 
 // During production and testing, replace with your own key please :)
-const YOUTUBE_API_KEY = "AIzaSyBGxVo7_RMKBhuuaFv46AYeAQbw1U7uquE";
-const OMBD_API_KEY = "57046b00";
 const STREAMING_INFO_KEY = "daa11a7f40msh6e1ece24c7b095dp1df636jsn01c0d63b2684";
+const YOUTUBE_API_KEY = "AIzaSyDfqFtp0qlTg8E5PQqIj7nGkMOupJ5ZyD0";
+const OMBD_API_KEY = "f3ecd794";
 
 // Call YouTube API to get the movie trailer Id for a movie title
 async function searchTrailer(movieTitle) {
@@ -40,7 +40,7 @@ function getPosterInfo(movieTitle) {
 
     // Once gets the data calls renderPosterCards then call servicesLinkGetter
     .then((data) => {
-      renderMovieInfo(data);
+      renderMovie(data);
       servicesLinkGetter(data);
     })
 
@@ -83,21 +83,36 @@ async function getSearchedTrailer() {
   return await searchTrailer(movieTitle);
 }
 
+
 async function init() {
   // Get results for the movie title
   var movieTitle = await getSearchedTrailer();
 
   // initiate an event listener for the buttons in the streaming services div
-  document
-    .getElementById("streaming-services")
-    .addEventListener("click", clickServicesHandler);
+  document.getElementById("streaming-services").addEventListener("click", clickServicesHandler);
+
+  // Set up event handler for going back to the results page
+  setupBackButton();
+}
+
+// Function to return
+function setupBackButton() {
+
+  // Grab element
+  var backButton = document.getElementById("backToResultsButton");
+
+  // Add event listener to redirect to previous page
+  backButton.addEventListener("click", (event) => {
+    window.location = document.referrer;
+  })
+
 }
 
 // Embeds the trailer video to the page
 function renderVideoPlayer(videoId) {
   document.getElementById("player").innerHTML = `
 
-  <iframe class="hoverable" type="text/html" width="640" height="360"
+  <iframe class="hoverable" type="text/html" width="100%" height="420px"
      src="https://www.youtube.com/embed/${videoId}?enablejsapi=1&origin=https://example.com"
      frameborder="0" allowfullscreen>
   </iframe>
@@ -105,20 +120,45 @@ function renderVideoPlayer(videoId) {
 `;
 }
 
+// Set the color of the score of the movie based on its value
+function setRatingColor(score) {
+
+  if (score >= 8) {
+    document.getElementById("rating").style.color = "Lime";
+  } else if (score >= 6) {
+    document.getElementById("rating").style.color = "OliveDrab";
+  } else if (score >= 4) {
+    document.getElementById("rating").style.color = "Gold";
+  } else if (score >= 2) {
+    document.getElementById("rating").style.color = "Peru";
+  } else {
+    document.getElementById("rating").style.color = "Red";
+  }
+}
+
 // The renderMovieInfo will dynamically add the gathered data from the Api call in the appropriate divs
-function renderMovieInfo(data) {
+function renderMovie(data) {
+  
+  setRatingColor(data.imdbRating);
+
+  renderMovieExtraInfo(data);
+
   document.getElementById("poster").src = data.Poster;
-  document.getElementById("title").innerHTML = data.Title;
-  document.getElementById("movie-info").innerHTML = `
-    Date: ${data.Year}<br>
-    IMBD Rating: ${data.imdbRating}<br>
-    Actors: ${data.Actors}<br>
-    Genre: ${data.Genre}<br>
-    Awards: ${data.Awards}<br>
-    Box Office: ${data.BoxOffice}<br>
-    Runtime: ${data.Runtime}<br>
-  `;
+  document.getElementById("title").textContent = data.Title;
+  document.getElementById("rating").textContent = `${data.imdbRating}`
+  document.getElementById("movie-info").textContent = `${data.Year} / ${data.Runtime} / ${data.Rated} / ${data.Genre}`;
+  console.log(data);
+  document.getElementById("movie-data").innerHTML = `${data.Actors}`;
   document.getElementById("movie-summary").innerHTML = data.Plot;
+}
+
+function renderMovieExtraInfo(data) {
+  document.getElementById("info-rating").textContent = `Rating: ${data.imdbRating}`;
+  document.getElementById("info-genre").textContent = `Genre: ${data.Genre}`;
+  document.getElementById("info-director").textContent = `Director(s): ${data.Director}`;
+  document.getElementById("info-writer").textContent = `Writer(s): ${data.Writer}`;
+  document.getElementById("info-language").textContent = `Language: ${data.Language}`;
+  document.getElementById("info-released").textContent = `Release Date: ${data.Released}`;
 }
 
 function makeLinks(data) {
