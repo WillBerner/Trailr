@@ -1,6 +1,10 @@
+var netflixLink = document.getElementById("netflix");
+var imdbLink = document.getElementById("imdb");
+
 // During production and testing, replace with your own key please :)
 const YOUTUBE_API_KEY = "AIzaSyBGxVo7_RMKBhuuaFv46AYeAQbw1U7uquE";
 const OMBD_API_KEY = "57046b00";
+const STREAMING_INFO_KEY = "daa11a7f40msh6e1ece24c7b095dp1df636jsn01c0d63b2684";
 
 // Call YouTube API to get the movie trailer Id for a movie title
 async function searchTrailer(movieTitle) {
@@ -24,7 +28,7 @@ async function searchTrailer(movieTitle) {
   renderVideoPlayer(result.items[0].id.videoId);
 }
 
-// -------------------------------------------------------------------------
+// This function will make an api call and fetches the movie info and calling the renderMovieInfo and passing in the data
 function getPosterInfo(movieTitle) {
   // Create a search request URI for the given movieTitle
   var requestUrl = `https://www.omdbapi.com/?t=${movieTitle}&apikey=${OMBD_API_KEY}`;
@@ -34,11 +38,39 @@ function getPosterInfo(movieTitle) {
     // Gets a JSON object containing the data needed
     .then((response) => response.json())
 
-    // Once gets the data calls renderPosterCards
-    .then((data) => renderMovieInfo(data))
+    // Once gets the data calls renderPosterCards then call servicesLinkGetter
+    .then((data) => {
+      renderMovieInfo(data);
+      servicesLinkGetter(data);
+    })
 
     // Log any errors that occur
     .catch((error) => console.log(error));
+}
+
+// This function will make an Api call to the streaming info api using the imdbID from the OMDB api
+function servicesLinkGetter(data) {
+  // Create a search request URI for the given imdbID
+  var requestUrl = `https://streaming-availability.p.rapidapi.com/get/basic?country=us&imdb_id=${data.imdbID}`;
+
+  // Make an api call with given URL
+  fetch(requestUrl, {
+    method: "GET",
+    headers: {
+      "x-rapidapi-key": STREAMING_INFO_KEY,
+      "x-rapidapi-host": "streaming-availability.p.rapidapi.com",
+    },
+  })
+    // Gets a JSON object containing the data needed
+    .then((response) => response.json())
+
+    // Once gets the data calls makeLinks function and passing in the data
+    .then((data) => makeLinks(data))
+
+    //  Log any errors that occur
+    .catch((error) => {
+      console.error(error);
+    });
 }
 
 async function getSearchedTrailer() {
@@ -54,6 +86,11 @@ async function getSearchedTrailer() {
 async function init() {
   // Get results for the movie title
   var movieTitle = await getSearchedTrailer();
+
+  // initiate an event listener for the buttons in the streaming services div
+  document
+    .getElementById("streaming-services")
+    .addEventListener("click", clickServicesHandler);
 }
 
 // Embeds the trailer video to the page
@@ -68,6 +105,7 @@ function renderVideoPlayer(videoId) {
 `;
 }
 
+// The renderMovieInfo will dynamically add the gathered data from the Api call in the appropriate divs
 function renderMovieInfo(data) {
   document.getElementById("poster").src = data.Poster;
   document.getElementById("title").innerHTML = data.Title;
@@ -81,6 +119,46 @@ function renderMovieInfo(data) {
     Runtime: ${data.Runtime}<br>
   `;
   document.getElementById("movie-summary").innerHTML = data.Plot;
+}
+
+function makeLinks(data) {
+  // Sets imdb button to be visible
+  imdbLink.style.display = "inline-block";
+
+  // Sets the data-set attribute to be the imdb link for the given movie
+  imdbLink.setAttribute(
+    "data-service",
+    `https://www.imdb.com/title/${data.imdbID}`
+  );
+
+  // Checks if this path exist that means the movie is available in the netflix database
+  if (data.streamingInfo.netflix) {
+    // if exists set netflix button to be visible
+    netflixLink.style.display = "inline-block";
+    // Sets the data-set attribute to be the netflix link for the given movie
+    netflixLink.setAttribute(
+      "data-service",
+      data.streamingInfo.netflix.us.link
+    );
+  }
+}
+
+function clickServicesHandler(event) {
+  // Gets the link from the clicked button
+  var service = event.target.getAttribute("data-service");
+  // Checks if the service has the link or not
+  if (service !== null) {
+    // Checks if the link contains the key word imdb
+    if (service.includes("imdb")) {
+      // Opens the imdb movie link in a new tab
+      window.open(service, "_blank");
+    }
+    // Checks if the link contains the key word netflix
+    if (service.includes("netflix")) {
+      // Opens the netflix movie link in a new tab
+      window.open(service, "_blank");
+    }
+  }
 }
 
 init();

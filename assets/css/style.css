@@ -17,6 +17,9 @@ body {
     background-size: cover;
 }
 
+#netflix, #imdb {
+    display: none;
+} 
 #menuCardRow {
     margin-top: 5%;
     margin-left: 2%;
