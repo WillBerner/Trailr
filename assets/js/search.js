@@ -50,8 +50,14 @@ async function init() {
   // Adds event listener for clicking on a movie trailer
   resultsEl.addEventListener('click', trailerLinkClickHandler);
 
-  // Calls the getPostersInfo function and pass the results
+  // Checks if Api call returned results object otherwise this means that the movie was not found
+  if(results){
+    // If got results object call getPostersInfo and pass the results
   getPostersInfo(results);
+  } else {
+    // Else return to the home page and append not-found to its url  
+    window.location = `./index.html?q=not-found`
+  }
 }
 
 // This function will make an api call for each title resulted in the original search
@@ -92,8 +98,8 @@ var renderPosterCards = function (data) {
           <h6 class="grey-text text-darken-4">${data.Title}: ${data.Year}</h6>
           <h6 > ${data.Runtime} </h6>
         </div>
-        <div class="card-action trailerLink">
-              <a data-title='${data.Title}' class="blue-text" href="#">Watch Trailer</a>
+        <div class="card-action trailerLink center-align">
+              <a data-title='${data.Title}' class="blue-text" href="#">View</a>
         </div>
       </div>
       </div>`;
