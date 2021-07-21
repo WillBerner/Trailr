@@ -132,7 +132,6 @@ function renderPosterCards(data) {
 
   // Checks if there is an error with any of the movie objects returned then skip that movie from the render
   var ratingFilter = document.getElementById("filterByIMBDScoreInput");
-  
 
   if (!data.Error && data.Poster !== "N/A") {
 
