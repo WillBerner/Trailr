@@ -1,76 +1,81 @@
 /* Used to center searchbar - temporary, just to demonstrate functionality */
 
 #container {
-    height: 100vh;
-    justify-content: center;
+  height: 100vh;
+  justify-content: center;
 }
 
 #searchCard {
-    width: 70%;
+  width: 70%;
 }
 
 iframe {
-    margin: 0 auto
+  margin: 0 auto;
 }
 
 body {
-    background-size: cover;
+  background-size: cover;
 }
 
-#netflix, #imdb {
-    display: none;
-} 
+#netflix,
+#imdb {
+  display: none;
+}
 #menuCardRow {
-    margin-top: 5%;
-    margin-left: 2%;
+  margin-top: 5%;
+  margin-left: 2%;
 }
 
 #menuCard {
-    border-radius: 20px;
+  border-radius: 20px;
 }
 
 #resultsDiv {
-    margin-top: 5%;
-    margin-left: 3%;
+  margin-top: 5%;
+  margin-left: 3%;
 }
 
 #navbar {
-    height: 10%;
+  height: 10%;
 }
 
 #backButton {
-    margin-left: 2%;
+  margin-left: 2%;
 }
 
 #menuTitle {
-    margin-bottom: 10%;
+  margin-bottom: 10%;
 }
 
 .filterTitle {
-    margin: 0;
+  margin: 0;
 }
 
 #movieContainer {
-    position: relative;
-    top: 50px;
+  position: relative;
+  top: 50px;
 }
 
 #posterColumn {
-    margin-left: 2%;
+  margin-left: 2%;
 }
 
 #trailerContainer {
-    margin: 3%;
-    border-bottom: 10px solid black;
-    border-top: 10px solid black;
+  margin: 3%;
+  border-bottom: 10px solid black;
+  border-top: 10px solid black;
 }
 
 #rating-card {
-    border-radius: 10px;
-    margin: 20px;
+  border-radius: 10px;
+  margin: 20px;
 }
 
 #movie-summary {
-    margin: 10px;
-    padding: 20px;
+  margin: 10px;
+  padding: 20px;
+}
+
+.names-style {
+  text-shadow: black 1px 0 5px;
 }
