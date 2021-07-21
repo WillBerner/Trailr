@@ -49,8 +49,14 @@ async function init() {
   // Adds event listener for clicking on a movie trailer
   resultsEl.addEventListener('click', trailerLinkClickHandler);
 
-  // Calls the getPostersInfo function and pass the results
+  // Checks if Api call returned results object otherwise this means that the movie was not found
+  if(results){
+    // If got results object call getPostersInfo and pass the results
   getPostersInfo(results);
+  } else {
+    // Else return to the home page and append not-found to its url  
+    window.location = `./index.html?q=not-found`
+  }
 }
 
 // This function will make an api call for each title resulted in the original search
