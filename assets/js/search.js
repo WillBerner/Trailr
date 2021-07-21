@@ -1,6 +1,3 @@
-var resultsEl = document.getElementById("results");
-var backButton = document.getElementById("backButton");
-
 // During production and testing, replace with your own key please :)
 // Made it global so it can be accessed by the
 const OMBD_API_KEY = "57046b00";
@@ -13,6 +10,7 @@ async function searchMovie(searchTerm) {
 
   // Attempt to fetch data asynchronously ("await") for the searchTerm
   var result = await fetch(QUERY_URI)
+
     // Standard getting json from response
     .then((response) => response.json())
 
@@ -28,7 +26,9 @@ async function searchMovie(searchTerm) {
   return result.Search;
 }
 
+// Try to get data for the movie the user searched for
 async function getSearchedMovie() {
+
   // Get search term from URL parameters
   var url = new URL(window.location.href);
   var searchTerm = url.searchParams.get("q");
@@ -40,6 +40,7 @@ async function getSearchedMovie() {
 // Call all set up functions inside here - event handlers, element creation, other page setup
 // Must be asynchronous in order to use await keyword for awaiting API response
 async function init() {
+
   // Get results for the searched term
   var results = await getSearchedMovie();
 
@@ -47,7 +48,7 @@ async function init() {
   document.body.style.backgroundImage = `url('https://source.unsplash.com/1600x900/?movie')`;
 
   // Adds event listener for clicking on a movie trailer
-  resultsEl.addEventListener('click', trailerLinkClickHandler);
+  document.getElementById("results").addEventListener('click', trailerLinkClickHandler);
 
   // Checks if Api call returned results object otherwise this means that the movie was not found
   if(results){
@@ -59,32 +60,80 @@ async function init() {
   }
 }
 
+// Sort date by ascending year
+function sortByDate(movieDataArray) {
+
+  // Higher Order Sort function implementation
+  var result = movieDataArray.sort((firstMovie, secondMovie) => {
+
+    // Sort based on year released
+    return firstMovie.Year - secondMovie.Year;
+
+  });
+
+  // Return the sorted array - perhaps in-place anyways, but working currently so...
+  return result;
+
+}
+
 // This function will make an api call for each title resulted in the original search
-var getPostersInfo = function (results) {
+async function getPostersInfo(results) {
+
+  // Save all fetched data in a movie array to render movies from
+  var movieDataArray = [];
+
   // Loops through the results and return more information about each returned title with a max of 8
   for (let i = 0; i < results.length && i < 8; i++) {
+
     // Create a search request URI for each returned title
     var requestUrl = `https://www.omdbapi.com/?t=${results[i].Title}&apikey=${OMBD_API_KEY}`;
 
     // Makes an api call for the given title
-    fetch(requestUrl)
+    await fetch(requestUrl)
+
       // Gets a JSON object containing the data needed
       .then((response) => response.json())
 
       // Once gets the data calls renderPosterCards
-      .then((data) => renderPosterCards(data))
+      .then((data) => {
+
+        // If there's an error response, don't add the movie to the array
+        if (!data.Error) {
+
+          // If the movie has already been added, don't add it
+          if (!movieDataArray.find(movie => movie.Title == data.Title)) {
+            
+            // Add movie data to results array
+            movieDataArray.push(data)
+          }
+          
+        }
+
+        // Sort the movie data array each time - perhaps inefficient, but working for now.
+        return sortByDate(movieDataArray);
+      })
+
       // Log any errors that occur
       .catch((error) => console.log(error));
   }
+
+  // After the results have been stored in an array and sorted
+  // Render them to the screen in order
+  movieDataArray.forEach(movie => {
+    renderPosterCards(movie);
+  })
+
 };
 
 // This function will render a card for each movie title returned
-var renderPosterCards = function (data) {
-  console.log(data);
+function renderPosterCards(data) {
+
+
   // Checks if there is an error with any of the movie objects returned then skip that movie from the render
   if (!data.Error && data.Poster !== "N/A") {
+
     // Injects a card for each movie title with it's title, poster, year, actors etc
-    resultsEl.innerHTML += `
+    document.getElementById("results").innerHTML += `
        <div class="col s12 m3">
         <div class="card large">
         <div class="card-image waves-effect waves-block waves-light">
@@ -96,7 +145,7 @@ var renderPosterCards = function (data) {
           <h6 > ${data.Runtime} </h6>
         </div>
         <div class="card-action trailerLink center-align">
-              <a data-title='${data.Title}' class="blue-text" href="#">View</a>
+              <a data-title="${data.Title}" class="blue-text" href="#">View</a>
         </div>
       </div>
       </div>`;
@@ -104,26 +153,15 @@ var renderPosterCards = function (data) {
 };
 
 // This function directs the user to a new page with a trailer for the movie
-var trailerLinkClickHandler = function(event){
+function trailerLinkClickHandler(event) {
 
   // Get title of movie from its html data-attribute
   var movieTitle = event.target.getAttribute('data-title');
 
   // If the user actually clicked on a trailer, redirect to it.
-  if(movieTitle){
+  if (movieTitle) {
     window.location = `./trailer.html?q=${movieTitle}`
   }
-}
-// Function to return to search page on click of back button
-var pageReturn = function () {
-  window.location = "./index.html";
-  console.log("click");
-};
-
-// Adds the event handler for the back button
-backButton.onclick = ()=>{
-  pageReturn();
-  console.log("click");
 }
 
 // Single function call to set up webpage
