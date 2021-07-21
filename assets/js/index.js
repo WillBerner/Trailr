@@ -1,10 +1,7 @@
-var searchButton = document.getElementById("searchButton");
-var searchInputEl = document.getElementById("searchInput");
-
-
 // Get any previous movie search terms the user has already used
 // Nonfunctional currently, for future use.
 function loadPreviousSearches() {
+
   // Try to get previous search terms from local storage
   var previousSearchTerms = JSON.parse(localStorage.getItem("prevSearches"));
 
@@ -20,7 +17,6 @@ function loadPreviousSearches() {
   // Return array of search terms (possibly empty)
   return previousSearchTerms;
 }
-
 
 // Call all set up functions inside here - event handlers, element creation, other page setup
 function init() {
@@ -42,11 +38,10 @@ function init() {
   document.body.style.backgroundImage = `url('https://source.unsplash.com/1600x900/?movie')`;
 
   // Adds the event handler for the search button
-  searchButton.addEventListener("click", searchBarHandler);
+  document.getElementById("searchButton").addEventListener("click", searchBarHandler);
 
   // Listens to an 'Enter' key for the form to accept input on the keyup
-  searchInputEl.addEventListener("keyup", enterKeyHandler);
-
+  document.getElementById("searchInput").addEventListener("keyup", enterKeyHandler);
 
 }
 
@@ -65,10 +60,10 @@ function saveSearchTerm(newSearchTerm) {
 }
 
 // Handle a search request 
-var searchBarHandler = function () {
+function searchBarHandler() {
 
   // Get the current value of the search text-input
-  var searchTerm = searchInputEl.value;
+  var searchTerm = document.getElementById("searchInput").value;
 
   // Save the search term to local storage
   saveSearchTerm(searchTerm);
@@ -79,7 +74,7 @@ var searchBarHandler = function () {
 };
 
 // This handler will check if the key pressed was an enter key to accept the input
-var enterKeyHandler = function (event) {
+function enterKeyHandler(event) {
   if (event.key === "Enter") {
     searchBarHandler();
   }
