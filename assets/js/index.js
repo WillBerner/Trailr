@@ -82,3 +82,45 @@ function enterKeyHandler(event) {
 
 // Single function call to set up webpage
 init();
+
+
+
+// What need be saved!
+var topRated = document.getElementById("randomTop");
+
+// Adds the event handler for the top rated button
+  topRated.addEventListener("click", refTopRated);
+
+function refTopRated () {
+  // Key for TMDB
+  var tmdbKey = '35bedaf996a0d463f1f8fa5911ed61f8'
+
+  // Creates random page number
+  var randomPage = Math.floor(Math.random() * 5) + 1;
+
+  // fetch request gets top rated movies
+  var topMoviesRequest = 'https://api.themoviedb.org/3/movie/top_rated?api_key=' + tmdbKey + '&with_original_language=en&primary_release_date.gte=2015-01-01&page=' + randomPage;
+
+  fetch(topMoviesRequest)
+    // Standard getting json from response
+    .then((response) => response.json())
+
+    // Return the actual data we care about (stored in result variable)
+    .then((data) => {
+    
+      var randomMovie = Math.floor(Math.random() * 20) + 0
+
+      // Picks a random movie on the randomized page
+      for (var i = 0; i < randomMovie; i++) {
+        topMovies = data.results[i].title;
+
+        // Stores selected movie
+        var bestMovies = [];
+        bestMovies.push(data.results[i].title)
+        console.log(bestMovies)
+        // localStorage.setItem('bestMovies', bestMovies)
+        window.location = `./toprandom.html?q=${bestMovies}`;
+  }
+      }
+    )
+}
