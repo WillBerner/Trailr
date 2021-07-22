@@ -38,11 +38,16 @@ function init() {
   // Adds a random "movies" background
   document.body.style.backgroundImage = `url('https://source.unsplash.com/1600x900/?movie')`;
 
+  getTopRated();
+
   // Adds the event handler for the search button
   document.getElementById("searchButton").addEventListener("click", searchBarHandler);
 
   // Listens to an 'Enter' key for the form to accept input on the keyup
   document.getElementById("searchInput").addEventListener("keyup", enterKeyHandler);
+
+   // Adds event listener for clicking on a movie card view button
+  document.getElementById("top-rated").addEventListener('click', viewButtonClickHandler);
 
 }
 
@@ -86,23 +91,22 @@ init();
 
 
 
-// What need be saved!
-var topRated = document.getElementById("randomTop");
+// // What need be saved!
+// var topRated = document.getElementById("randomTop");
 
 // // Adds the event handler for the top rated button
-topRated.addEventListener("click", refTopRated);
+// topRated.addEventListener("click", refTopRated);
 
-function refTopRated() {
-  //   // Key for TMDB
-  var tmdbKey = '35bedaf996a0d463f1f8fa5911ed61f8'
+function getTopRated() {
+  // Key for TMDB
+  const TMDB_API_KEY = '35bedaf996a0d463f1f8fa5911ed61f8'
 
   // Creates random page number
-  var randomPage = Math.floor(Math.random() * 5);
+  // var randomPage = Math.floor(Math.random() * 5);
 
 
   // fetch request gets top rated movies
-  var topMoviesRequest = 'https://api.themoviedb.org/3/movie/top_rated?api_key=' + tmdbKey + '&with_original_language=en&primary_release_date.gte=2015-01-01&page=' + randomPage;
-  // https://api.themoviedb.org/3/discover/movie?api_key=35bedaf996a0d463f1f8fa5911ed61f8&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1
+  var topMoviesRequest = `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&language=en-US&sort_by=popularity.desc&include_video=false&page=1`
 
   fetch(topMoviesRequest)
     // Standard getting json from response
@@ -110,23 +114,48 @@ function refTopRated() {
 
     // Return the actual data we care about (stored in result variable)
     .then((data) => {
-      console.log(data.results)
+      renderTopRated(data)
 
-      var randomMovie = Math.floor(Math.random() * 20)
+      
+    })
+}
 
-      // Picks a random movie on the randomized page
-      for (var i = 0; i < randomMovie; i++) {
-        topMovies = data.results[i].title;
+function renderTopRated(data){
+  var topMovies = data.results;
+  
 
-        // Stores selected movie
-        var bestMovies = [];
-        bestMovies.push(data.results[i].title)
-        // console.log(bestMovies)
-        // localStorage.setItem('bestMovies', bestMovies)
-        // window.location = `./search.html?q=${bestMovies}`;
-      }
-    }
-    )
+  for (var i = 0; i < topMovies.length; i++) {
+    console.log(topMovies[i])
+    
+
+    document.getElementById("top-rated").innerHTML += `
+    <div class="col s12 m6 l3">
+      <div class="card large">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" src="http://image.tmdb.org/t/p/w300${topMovies[i].poster_path}">
+        </div>
+
+        <div class="card-content">
+          <h6 class="grey-text text-darken-4">${topMovies[i].title}</h6>
+          <h6>Release Date: ${topMovies[i].release_date}</h6>
+        </div>
+        <div class="card-action trailerLink center-align">
+          <a data-title="${topMovies[i].title}" class="blue-text" href="#">View</a>
+        </div>
+      </div>
+    </div>`;
+    
+  }
+}
+
+function viewButtonClickHandler(event){
+   // Get title of movie from its html data-attribute
+   var movieTitle = event.target.getAttribute('data-title');
+
+   // If the user actually clicked on a trailer, redirect to it.
+   if (movieTitle) {
+     window.location = `./trailer.html?q=${movieTitle}`
+   }
 }
 
 
