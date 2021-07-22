@@ -27,8 +27,9 @@ function init() {
 
   // Checks if the URL ends with not found key word
   if (notFound === 'not-found') {
+    
     // Replaces the input placeholder with this warning and prompts for entering another title 
-    document.getElementById("searchInput").placeholder = 'There was no movie with this title please enter another movie title!'
+    document.getElementById("searchInput").placeholder = 'There was no movie with this title - please try again!'
   }
 
   // Get previous search terms (nonfunctional currently, for future use)

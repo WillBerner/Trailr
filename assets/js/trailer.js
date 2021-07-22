@@ -94,6 +94,8 @@ async function init() {
   // initiate an event listener for the buttons in the streaming services div
   document.getElementById("streaming-services").addEventListener("click", clickServicesHandler);
 
+  document.body.style.backgroundColor = "orangered";
+
   // Set up event handler for going back to the results page
   setupBackButton();
 }
@@ -153,7 +155,7 @@ function renderMovie(data) {
   document.getElementById("title").textContent = data.Title;
   document.getElementById("rating").textContent = `${data.imdbRating}`
   document.getElementById("movie-info").textContent = `${data.Year} / ${data.Runtime} / ${data.Rated} / ${data.Genre}`;
-  document.getElementById("movie-data").innerHTML = `${data.Actors}`;
+  document.getElementById("movie-actors").innerHTML = `${data.Actors}`;
   document.getElementById("movie-summary").innerHTML = data.Plot;
 }
 

@@ -1,97 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Linking custom CSS stylesheet -->
-    <link rel="stylesheet" href="./assets/css/style.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Linking Materialize Icons Library -->
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
+  <!-- Linking custom CSS stylesheet -->
+  <link rel="stylesheet" href="./assets/css/style.css" />
 
-    <!-- Linking Materialize CSS Library -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
+  <!-- Linking Materialize Icons Library -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 
-    <title>Search Results</title>
-  </head>
+  <!-- Linking Materialize CSS Library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
 
-  <body>
-    <!-- Header Element -->
-    <header class="navbar-fixed">
-      <nav id="navbar">
-        <div class="nav-wrapper blue-grey darken-1 valign-wrapper">
-          <a class="brand-logo center">Trail<span class="cyan-text accent-3">r</a>
-          <ul id="backButton" class="left">
-            <li><a href="./index.html">Back Home</a></li>
+  <title>Search Results</title>
+</head>
 
-            <li><a href="./about.html">About Us</a></li>
-          </ul>
-        </div>
-      </nav>
-    </header>
+<body>
+  <!-- Header Element -->
+  <header class="navbar-fixed">
+    <nav id="navbar">
+      <div class="nav-wrapper valign-wrapper">
+        <a class="brand-logo center">Trail<span id="titleR">r</a>
+        <ul id="backButton" class="left hide-on-small-and-down">
+          <li><a href="./index.html">Back Home</a></li>
 
-    <div class="row">
-      <div class="col s3 center-align" id="menuCardRow">
-        <div class="card large" id="menuCard">
-          <div class="card-content">
-            <div class="card-title">
-              <h5 id="menuTitle">Filter results</h5>
-            </div>
+          <li><a href="./about.html">About Us</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
 
-            <div class="container" id="filterContainer">
-              <div class="row">
-                <div class="col 12 valign-wrapper">
-                  <input
-                    type="checkbox"
-                    class="filled-in"
-                    id="filterByRRatedInput"
-                  />
-                  <span class="filterTitle">Remove R Rated Movies</span>
-                </div>
-              </div>
+  <div class="row" id="contentRow">
 
-              <div class="row valign-wrapper">
-                <div class="input-field col s9">
-                  <input id="filterByYearInput" type="text" class="validate" />
-                  <label for="filterByYearInput">By year</label>
-                </div>
-                <button class="col s3" id="">Go</button>
-              </div>
+    <div class="col l3 m5 s12 center-align" id="menuCardRow">
+      <div class="card large" id="menuCard">
+        <div class="card-content">
+          <div class="card-title">
+            <h5 id="menuTitle">Filter results</h5>
+          </div>
 
-              <div class="row valign-wrapper">
-                <div class="input-field col s9">
-                  <input
-                    id="filterByIMBDScoreInput"
-                    type="number"
-                    class="validate"
-                  />
-                  <label for="filterByIMBDScoreInput">By IMDB score</label>
-                </div>
-                <button class="col s3" id="">Go</button>
+          <div class="container" id="filterContainer">
+
+            <div class="row">
+              <div class="col 12 valign-wrapper">
+                <input type="checkbox" class="filled-in" id="filterByRRatedInput" />
+                <span class="filterTitle">Remove R Rated Movies</span>
               </div>
             </div>
+
+            <div class="row valign-wrapper">
+              <div class="input-field col s9">
+                <input id="filterByYearInput" type="text" class="validate" />
+                <label for="filterByYearInput">By Year</label>
+              </div>
+              <button class="col s3 btn" id="">Go</button>
+            </div>
+
+            <div class="row valign-wrapper">
+              <div class="input-field col s9">
+                <input id="filterByIMBDScoreInput" type="number" class="validate" />
+                <label for="filterByIMBDScoreInput">By IMDB Score</label>
+              </div>
+              <button class="col s3 btn" id="">Go</button>
+            </div>
+
           </div>
         </div>
       </div>
-
-      <div class="col s8" id="resultsDiv">
-        <!-- Currently dynamically populated by the javascript in search.js -->
-        <div id="results" class="row"></div>
-      </div>
     </div>
 
-    <!-- Linking our script -->
-    <script src="./assets/js/search.js"></script>
+    <div class="col l8 m6 s12" id="resultsDiv">
+      <!-- Currently dynamically populated by the javascript in search.js -->
+      <div id="results" class="row"></div>
+    </div>
+  </div>
 
-    <!-- Linking Materialize JS Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  </body>
+  <!-- Linking our script -->
+  <script src="./assets/js/search.js"></script>
+
+  <!-- Linking Materialize JS Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+
 </html>
