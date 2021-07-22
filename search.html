@@ -68,12 +68,15 @@
 
               <div class="row valign-wrapper">
                 <div class="input-field col s9">
+                  <div for="filterByIMBDScoreInput">By IMDB score</div>
                   <input
                     id="filterByIMBDScoreInput"
-                    type="number"
+                    type="range"
+                    min="0"
+                    max="10"
                     class="validate"
                   />
-                  <label for="filterByIMBDScoreInput">By IMDB score</label>
+                  
                 </div>
                 <button class="col s3" id="">Go</button>
               </div>

@@ -135,25 +135,47 @@ function renderPosterCards(data) {
 
   if (!data.Error && data.Poster !== "N/A") {
 
+    
     // Injects a card for each movie title with it's title, poster, year, actors etc
-    document.getElementById("results").innerHTML += `
-       <div class="col s12 m3">
-        <div class="card large">
-        <div class="card-image waves-effect waves-block waves-light">
-          <img class="activator" src="${data.Poster}">
-        </div>
+    // document.getElementById("results").innerHTML += `
+    //    <div class="col s12 m3">
+    //     <div class="card large">
+    //     <div class="card-image waves-effect waves-block waves-light">
+    //       <img class="activator" src="${data.Poster}">
+    //     </div>
 
-        <div class="card-content">
-          <h6 class="grey-text text-darken-4">${data.Title}: ${data.Year}</h6>
-          <h6 > ${data.Runtime} </h6>
-        </div>
-        <div class="card-action trailerLink center-align">
-              <a data-title="${data.Title}" class="blue-text" href="#">View</a>
-        </div>
-      </div>
-      </div>`;
+    //     <div class="card-content">
+    //       <h6 class="grey-text text-darken-4">${data.Title}: ${data.Year}</h6>
+    //       <h6 > ${data.Runtime} </h6>
+    //     </div>
+    //     <div class="card-action trailerLink center-align">
+    //           <a data-title="${data.Title}" class="blue-text" href="#">View</a>
+    //     </div>
+    //   </div>
+    //   </div>`;
+
+    //TODO: live update rating
+    
+    if (data.imdbRating >= ratingFilter.value){
+      document.getElementById("results").innerHTML += `
+      <div class="col s12 m3">
+       <div class="card large">
+       <div class="card-image waves-effect waves-block waves-light">
+         <img class="activator" src="${data.Poster}">
+       </div>
+
+       <div class="card-content">
+         <h6 class="grey-text text-darken-4">${data.Title}: ${data.Year}</h6>
+         <h6 > ${data.Runtime} </h6>
+       </div>
+       <div class="card-action trailerLink center-align">
+             <a data-title="${data.Title}" class="blue-text" href="#">View</a>
+       </div>
+     </div>
+     </div>`;
+    }
   }
-  console.log(ratingFilter)
+  console.log(ratingFilter.value)
 };
 
 // This function directs the user to a new page with a trailer for the movie
