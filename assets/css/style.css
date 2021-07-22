@@ -1,4 +1,8 @@
 /* Used to center searchbar - temporary, just to demonstrate functionality */
+:root {
+  --primary-site-color: orangered;
+  --button-color: #00eaff;
+}
 
 #container {
   height: 100vh;
@@ -7,6 +11,7 @@
 
 #searchCard {
   width: 70%;
+  background-color: var(--primary-site-color);
 }
 
 iframe {
@@ -17,12 +22,19 @@ body {
   background-size: cover;
 }
 
+.btn, button {
+  background-color: var(--button-color) !important;
+}
+
+#titleR {
+  color: var(--button-color);
+}
+
 #netflix,
 #imdb {
   display: none;
 }
 #menuCardRow {
-  margin-top: 5%;
   margin-left: 2%;
 }
 
@@ -31,12 +43,20 @@ body {
 }
 
 #resultsDiv {
-  margin-top: 5%;
   margin-left: 3%;
 }
 
 #navbar {
-  height: 10%;
+  height: 80px;
+  background-color: var(--primary-site-color);
+}
+
+#navbarContainer {
+  margin-bottom: 10px;
+}
+
+#posterTitleRow {
+  margin-top: 20px;
 }
 
 #backButton {
@@ -47,21 +67,12 @@ body {
   margin-bottom: 10%;
 }
 
-.filterTitle {
-  margin: 0;
-}
-
 #movieContainer {
-  position: relative;
-  top: 50px;
-}
-
-#posterColumn {
-  margin-left: 2%;
+  padding: 15px;
+  background-color: white;
 }
 
 #trailerContainer {
-  margin: 3%;
   border-bottom: 10px solid black;
   border-top: 10px solid black;
 }
@@ -69,10 +80,21 @@ body {
 #rating-card {
   border-radius: 10px;
   margin: 20px;
+
+  padding: 10px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+#rating {
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 #movie-summary {
   margin: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   padding: 20px;
 }
 
@@ -80,7 +102,18 @@ body {
   text-shadow: black 1px 0 5px;
 }
 
-
 .card-action a {
     margin-right: 0 !important;
+}
+
+#contentRow {
+  margin-top: 5%;
+}
+
+#player {
+  margin-top: 5px;
+}
+
+#plotRow {
+  border-bottom: 10px solid black;
 }

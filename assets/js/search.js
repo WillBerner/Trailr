@@ -2,7 +2,6 @@
 // Made it global so it can be accessed by the
 const OMBD_API_KEY = "57046b00";
 
-
 // Call OMDb API to get movie data for a search term
 async function searchMovie(searchTerm) {
   // Create a search request URI with a given search term
@@ -51,10 +50,13 @@ async function init() {
   document.getElementById("results").addEventListener('click', trailerLinkClickHandler);
 
   // Checks if Api call returned results object otherwise this means that the movie was not found
-  if(results){
+  if (results) {
+
     // If got results object call getPostersInfo and pass the results
-  getPostersInfo(results);
+    getPostersInfo(results);
+
   } else {
+    
     // Else return to the home page and append not-found to its url  
     window.location = `./index.html?q=not-found`
   }
@@ -102,11 +104,11 @@ async function getPostersInfo(results) {
 
           // If the movie has already been added, don't add it
           if (!movieDataArray.find(movie => movie.Title == data.Title)) {
-            
+
             // Add movie data to results array
             movieDataArray.push(data)
           }
-          
+
         }
 
         // Sort the movie data array each time - perhaps inefficient, but working for now.
@@ -128,13 +130,12 @@ async function getPostersInfo(results) {
 // This function will render a card for each movie title returned
 function renderPosterCards(data) {
 
-
   // Checks if there is an error with any of the movie objects returned then skip that movie from the render
   if (!data.Error && data.Poster !== "N/A") {
 
     // Injects a card for each movie title with it's title, poster, year, actors etc
     document.getElementById("results").innerHTML += `
-       <div class="col s12 m3">
+       <div class="col s12 m6 l3">
         <div class="card large">
         <div class="card-image waves-effect waves-block waves-light">
           <img class="activator" src="${data.Poster}">
