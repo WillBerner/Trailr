@@ -69,6 +69,12 @@ function searchBarHandler() {
   // Save the search term to local storage
   saveSearchTerm(searchTerm);
 
+  // If the user didn't type in a value, display an error and don't redirect
+  if (!searchTerm) {
+    document.getElementById("searchInput").placeholder = "Error! Please enter a movie to search for.";
+    return;
+  }
+
   // redirect the user to the new page with a parameter of the search term
   window.location = `./search.html?q=${searchTerm}`;
 
