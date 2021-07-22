@@ -94,8 +94,6 @@ async function init() {
   // initiate an event listener for the buttons in the streaming services div
   document.getElementById("streaming-services").addEventListener("click", clickServicesHandler);
 
-  document.body.style.backgroundColor = "orangered";
-
   // Set up event handler for going back to the results page
   setupBackButton();
 }
