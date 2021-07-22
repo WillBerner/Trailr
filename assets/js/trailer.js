@@ -153,7 +153,7 @@ function renderMovie(data) {
   document.getElementById("title").textContent = data.Title;
   document.getElementById("rating").textContent = `${data.imdbRating}`
   document.getElementById("movie-info").textContent = `${data.Year} / ${data.Runtime} / ${data.Rated} / ${data.Genre}`;
-  document.getElementById("movie-data").innerHTML = `${data.Actors}`;
+  document.getElementById("movie-actors").innerHTML = `${data.Actors}`;
   document.getElementById("movie-summary").innerHTML = data.Plot;
 }
 

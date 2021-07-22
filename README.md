@@ -1,6 +1,5 @@
 # [Traileremma](https://willberner.github.io/Trailr/)
 
-A basic web application for searching, filtering, and sorting movies. Created with data pulled from the OMDb API and styled with Materialize.
 A Front-End web application for searching for movies. Users can search a movie by title, select which movie they're interested in, and view information about the movie such as its IMDB critic rating, trailer, runtime, if the movie is on Netflix to stream, and other related material.
 
 ## Instructions for use
