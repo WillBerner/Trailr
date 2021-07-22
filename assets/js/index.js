@@ -1,3 +1,6 @@
+// the movie data base key
+const TMDB_API_KEY = '35bedaf996a0d463f1f8fa5911ed61f8'
+
 // Get any previous movie search terms the user has already used
 // Nonfunctional currently, for future use.
 function loadPreviousSearches() {
@@ -90,44 +93,31 @@ function enterKeyHandler(event) {
 init();
 
 
-
-// // What need be saved!
-// var topRated = document.getElementById("randomTop");
-
-// // Adds the event handler for the top rated button
-// topRated.addEventListener("click", refTopRated);
-
 function getTopRated() {
-  // Key for TMDB
-  const TMDB_API_KEY = '35bedaf996a0d463f1f8fa5911ed61f8'
 
-  // Creates random page number
-  // var randomPage = Math.floor(Math.random() * 5);
-
-
-  // fetch request gets top rated movies
+  // Fetch request gets top rated movies
   var topMoviesRequest = `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&language=en-US&sort_by=popularity.desc&include_video=false&page=1`
 
+  // Makes an api call to the TMDB database
   fetch(topMoviesRequest)
     // Standard getting json from response
     .then((response) => response.json())
 
     // Return the actual data we care about (stored in result variable)
     .then((data) => {
+      // Calls the renderTopRated and passing in the data retrieved 
       renderTopRated(data)
-
-      
     })
 }
 
+
+// The renderTopRated function renders a card for each of the topRated movies
 function renderTopRated(data){
+  // Gets the results array from the data and store it in a variable
   var topMovies = data.results;
   
-
   for (var i = 0; i < topMovies.length; i++) {
-    console.log(topMovies[i])
-    
-
+    // Injects a card for each movie title with it's title, poster, release date etc
     document.getElementById("top-rated").innerHTML += `
     <div class="col s12 m6 l3">
       <div class="card large">
@@ -148,11 +138,12 @@ function renderTopRated(data){
   }
 }
 
+// This function directs the user to a new page with a trailer for the movie
 function viewButtonClickHandler(event){
    // Get title of movie from its html data-attribute
    var movieTitle = event.target.getAttribute('data-title');
 
-   // If the user actually clicked on a trailer, redirect to it.
+   // If the user actually clicked on a the view button, redirect to it.
    if (movieTitle) {
      window.location = `./trailer.html?q=${movieTitle}`
    }
