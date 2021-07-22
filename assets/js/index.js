@@ -101,6 +101,7 @@ function refTopRated() {
 
   // fetch request gets top rated movies
   var topMoviesRequest = 'https://api.themoviedb.org/3/movie/top_rated?api_key=' + tmdbKey + '&with_original_language=en&primary_release_date.gte=2015-01-01&page=' + randomPage;
+  // https://api.themoviedb.org/3/discover/movie?api_key=35bedaf996a0d463f1f8fa5911ed61f8&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1
 
   fetch(topMoviesRequest)
     // Standard getting json from response
@@ -108,6 +109,7 @@ function refTopRated() {
 
     // Return the actual data we care about (stored in result variable)
     .then((data) => {
+      console.log(data.results)
 
       var randomMovie = Math.floor(Math.random() * 20)
 
@@ -118,9 +120,9 @@ function refTopRated() {
         // Stores selected movie
         var bestMovies = [];
         bestMovies.push(data.results[i].title)
-        console.log(bestMovies)
+        // console.log(bestMovies)
         // localStorage.setItem('bestMovies', bestMovies)
-        window.location = `./search.html?q=${bestMovies}`;
+        // window.location = `./search.html?q=${bestMovies}`;
       }
     }
     )
