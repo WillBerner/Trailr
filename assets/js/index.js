@@ -1,6 +1,24 @@
 // the movie data base key
 const TMDB_API_KEY = '35bedaf996a0d463f1f8fa5911ed61f8'
 
+// Calls TMDb API to get top rated movies list
+function getTopRated() {
+
+  // Fetch request gets top rated movies
+  var topMoviesRequest = `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&language=en-US&sort_by=popularity.desc&include_video=false&page=1`
+
+  // Makes an api call to the TMDB database
+  fetch(topMoviesRequest)
+    // Standard getting json from response
+    .then((response) => response.json())
+
+    // Return the actual data we care about (stored in result variable)
+    .then((data) => {
+      // Calls the renderTopRated and passing in the data retrieved 
+      renderTopRated(data)
+    })
+}
+
 // Get any previous movie search terms the user has already used
 // Nonfunctional currently, for future use.
 function loadPreviousSearches() {
@@ -68,48 +86,6 @@ function saveSearchTerm(newSearchTerm) {
 
 }
 
-// Handle a search request 
-function searchBarHandler() {
-
-  // Get the current value of the search text-input
-  var searchTerm = document.getElementById("searchInput").value;
-
-  // Save the search term to local storage
-  saveSearchTerm(searchTerm);
-
-  // redirect the user to the new page with a parameter of the search term
-  window.location = `./search.html?q=${searchTerm}`;
-
-};
-
-// This handler will check if the key pressed was an enter key to accept the input
-function enterKeyHandler(event) {
-  if (event.key === "Enter") {
-    searchBarHandler();
-  }
-};
-
-// Single function call to set up webpage
-init();
-
-
-function getTopRated() {
-
-  // Fetch request gets top rated movies
-  var topMoviesRequest = `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&language=en-US&sort_by=popularity.desc&include_video=false&page=1`
-
-  // Makes an api call to the TMDB database
-  fetch(topMoviesRequest)
-    // Standard getting json from response
-    .then((response) => response.json())
-
-    // Return the actual data we care about (stored in result variable)
-    .then((data) => {
-      // Calls the renderTopRated and passing in the data retrieved 
-      renderTopRated(data)
-    })
-}
-
 
 // The renderTopRated function renders a card for each of the topRated movies
 function renderTopRated(data){
@@ -138,16 +114,47 @@ function renderTopRated(data){
   }
 }
 
+// Handle a search request 
+function searchBarHandler() {
+
+  // Get the current value of the search text-input
+  var searchTerm = document.getElementById("searchInput").value;
+
+  // Save the search term to local storage
+  saveSearchTerm(searchTerm);
+
+  // redirect the user to the new page with a parameter of the search term
+  window.location = `./search.html?q=${searchTerm}`;
+
+};
+
 // This function directs the user to a new page with a trailer for the movie
 function viewButtonClickHandler(event){
-   // Get title of movie from its html data-attribute
-   var movieTitle = event.target.getAttribute('data-title');
+  // Get title of movie from its html data-attribute
+  var movieTitle = event.target.getAttribute('data-title');
 
-   // If the user actually clicked on a the view button, redirect to it.
-   if (movieTitle) {
-     window.location = `./trailer.html?q=${movieTitle}`
-   }
+  // If the user actually clicked on a the view button, redirect to it.
+  if (movieTitle) {
+    window.location = `./trailer.html?q=${movieTitle}`
+  }
 }
+
+// This handler will check if the key pressed was an enter key to accept the input
+function enterKeyHandler(event) {
+  if (event.key === "Enter") {
+    searchBarHandler();
+  }
+};
+
+// Single function call to set up webpage
+init();
+
+
+
+
+
+
+
 
 
 
