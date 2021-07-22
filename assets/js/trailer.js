@@ -80,6 +80,11 @@ async function getSearchedTrailer() {
   var url = new URL(window.location.href);
   var movieTitle = url.searchParams.get("q");
 
+  // If a user tries to search without a query string, return them to the home page.
+  if (!movieTitle) {
+    window.location = "./index.html";
+  }
+
   // Calls the getPostersInfo and searchTrailer functions and pass in the movieTitle as parameter
   getPosterInfo(movieTitle);
   return await searchTrailer(movieTitle);
