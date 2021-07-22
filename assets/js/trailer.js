@@ -126,6 +126,12 @@ function renderVideoPlayer(videoId) {
 // Set the color of the score of the movie based on its value
 function setRatingColor(score) {
 
+  // If an IMDB score doesn't exist (yet to be released movies, or movies with no rating)
+  if (score == "N/A") {
+    document.getElementById("rating").style.color = "Black";
+    return;
+  }
+
   if (score >= 8) {
     document.getElementById("rating").style.color = "Lime";
   } else if (score >= 6) {

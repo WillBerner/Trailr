@@ -28,6 +28,7 @@ function loadPreviousSearches() {
 
   // If there exists no terms yet (new user), create new array
   if (!previousSearchTerms) {
+    
     // Create empty array
     previousSearchTerms = [];
 
@@ -85,7 +86,6 @@ function saveSearchTerm(newSearchTerm) {
   localStorage.setItem("prevSearches", JSON.stringify(previousSearchTerms));
 
 }
-
 
 // The renderTopRated function renders a card for each of the topRated movies
 function renderTopRated(data){
