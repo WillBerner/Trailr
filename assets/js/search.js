@@ -157,30 +157,31 @@ function renderPosterCards(data) {
 
 //TODO: live update rating
 
-var ratingFilter = document.getElementById("filterByIMBDScoreInput");
-var imdbBtn = document.getElementById("imdbBtn");
+// var ratingFilter = document.getElementById("filterByIMBDScoreInput");
+// var imdbBtn = document.getElementById("imdbBtn");
 
-function imdbFilter(){
-  console.log("Wutang for the Children")
-  if (data.imdbRating >= ratingFilter.value){
-    document.getElementById("results").innerHTML += `
-    <div class="col s12 m3">
-    <div class="card large">
-    <div class="card-image waves-effect waves-block waves-light">
-      <img class="activator" src="${data.Poster}">
-    </div>
+// function imdbFilter(){
+//   console.log("Wutang for the Children")
+//   if (data.imdbRating >= ratingFilter.value){
+//     document.getElementById("results").innerHTML += `
+//     <div class="col s12 m3">
+//     <div class="card large">
+//     <div class="card-image waves-effect waves-block waves-light">
+//       <img class="activator" src="${data.Poster}">
+//     </div>
 
-    <div class="card-content">
-      <h6 class="grey-text text-darken-4">${data.Title}: ${data.Year}</h6>
-      <h6 > ${data.Runtime} </h6>
-    </div>
-    <div class="card-action trailerLink center-align">
-          <a data-title="${data.Title}" class="blue-text" href="#">View</a>
-    </div>
-  </div>
-  </div>`;
-  }
-}
+//     <div class="card-content">
+//       <h6 class="grey-text text-darken-4">${data.Title}: ${data.Year}</h6>
+//       <h6 > ${data.Runtime} </h6>
+//     </div>
+//     <div class="card-action trailerLink center-align">
+//           <a data-title="${data.Title}" class="blue-text" href="#">View</a>
+//     </div>
+//   </div>
+//   </div>`;
+//   }
+// }
+
 // This function directs the user to a new page with a trailer for the movie
 function trailerLinkClickHandler(event) {
 
@@ -193,5 +194,5 @@ function trailerLinkClickHandler(event) {
   }
 }
 
-// Single function call to set up webpage
+//Single function call to set up webpage
 init();
