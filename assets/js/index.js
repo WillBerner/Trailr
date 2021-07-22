@@ -26,7 +26,7 @@ function init() {
   var notFound = url.searchParams.get("q")
 
   // Checks if the URL ends with not found key word
-  if(notFound === 'not-found'){
+  if (notFound === 'not-found') {
     // Replaces the input placeholder with this warning and prompts for entering another title 
     searchInputEl.placeholder = 'There was no movie with this title please enter another movie title!'
   }
@@ -88,15 +88,16 @@ init();
 // What need be saved!
 var topRated = document.getElementById("randomTop");
 
-// Adds the event handler for the top rated button
-  topRated.addEventListener("click", refTopRated);
+// // Adds the event handler for the top rated button
+topRated.addEventListener("click", refTopRated);
 
-function refTopRated () {
-  // Key for TMDB
+function refTopRated() {
+  //   // Key for TMDB
   var tmdbKey = '35bedaf996a0d463f1f8fa5911ed61f8'
 
   // Creates random page number
-  var randomPage = Math.floor(Math.random() * 5) + 1;
+  var randomPage = Math.floor(Math.random() * 5);
+
 
   // fetch request gets top rated movies
   var topMoviesRequest = 'https://api.themoviedb.org/3/movie/top_rated?api_key=' + tmdbKey + '&with_original_language=en&primary_release_date.gte=2015-01-01&page=' + randomPage;
@@ -107,8 +108,8 @@ function refTopRated () {
 
     // Return the actual data we care about (stored in result variable)
     .then((data) => {
-    
-      var randomMovie = Math.floor(Math.random() * 20) + 0
+
+      var randomMovie = Math.floor(Math.random() * 20)
 
       // Picks a random movie on the randomized page
       for (var i = 0; i < randomMovie; i++) {
@@ -119,8 +120,11 @@ function refTopRated () {
         bestMovies.push(data.results[i].title)
         console.log(bestMovies)
         // localStorage.setItem('bestMovies', bestMovies)
-        window.location = `./toprandom.html?q=${bestMovies}`;
-  }
+        window.location = `./search.html?q=${bestMovies}`;
       }
+    }
     )
 }
+
+
+
