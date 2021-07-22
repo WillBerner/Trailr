@@ -1,45 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Info</title>
+    <!-- Linking Materialize Icons Library -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Movie Info</title>
-  <!-- Linking Materialize Icons Library -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <!-- Linking Materialize CSS Library -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
 
-  <!-- Linking Materialize CSS Library -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+    <!-- Linking custom CSS stylesheet -->
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
 
-  <!-- Linking custom CSS stylesheet -->
-  <link rel="stylesheet" href="./assets/css/style.css" />
-</head>
+  <body>
+    <header class="navbar-fixed">
+      <nav id="navbar">
+        <div class="nav-wrapper blue-grey darken-1 valign-wrapper">
+          <a href="./" class="brand-logo center">Trail<span class="cyan-text accent-3">r</a>
+          <ul id="backButton" class="left">
+            <li id="backToResultsButton"><a>Back to Results</a></li>
 
+            <li><a href="./about.html">About Us</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
 
+    <div class="container" id="movieContainer">
+      <div class="row center-align valign-wrapper">
+        <div class="col s3 center-align" id="posterColumn">
+          <img id="poster" class="responsive-img" src="" class="z-depth-1" />
+        </div>
 
-<body>
-
-  <header class="navbar-fixed">
-    <nav id="navbar">
-      <div class="nav-wrapper blue-grey darken-1 valign-wrapper">
-        <a href="./" class="brand-logo center">Traileremma</a>
-        <ul id="backButton" class="left">
-          <li id="backToResultsButton"><a>Back to Results</a></li>
-        </ul>
-      </div>
-    </nav>
-  </header>
-
-  <div class="container" id="movieContainer">
-    <div class="row center-align valign-wrapper">
-
-      <div class="col s3 center-align" id="posterColumn">
-        <img id="poster" class="responsive-img" src="" class="z-depth-1">
-      </div>
-
-      <div class="col s8 left-align center" id="infoColumn">
-        
+        <div class="col s8 left-align center" id="infoColumn">
           <div class="row valign-wrapper center-align">
             <h3 class="col s9" id="title"></h3>
             <div class="card left-align" id="rating-card">
@@ -50,46 +52,46 @@
           <div class="center">
             <h5 id="movie-info"></h5>
           </div>
-        <h6 id="movie-data"></h6>
-        <div id="streaming-services">
-          <a id="netflix" class="waves-effect waves-light"><img height="40px" src="./assets/images/netflix_icon.png"></a>
-          <a id="imdb" class="waves-effect waves-light"><img height="40px" src="./assets/images/imdb_icon.png"></a>
+          <h6 id="movie-data"></h6>
+          <div id="streaming-services">
+            <a id="netflix" class="waves-effect waves-light"
+              ><img height="40px" src="./assets/images/netflix_icon.png"
+            /></a>
+            <a id="imdb" class="waves-effect waves-light"
+              ><img height="40px" src="./assets/images/imdb_icon.png"
+            /></a>
+          </div>
         </div>
       </div>
+      <div class="row center-align" id="trailerContainer">
+        <div class="center" id="player"></div>
+      </div>
 
-    </div>
-    <div class="row center-align" id="trailerContainer">
-      <div class="center" id="player"></div>
-    </div>
-
-    <div class="row left-align" id="infoRow">
-
-      <h4 class="col s12" >Movie Info</h4>
-      <div class="row left-align">
-        <div class="row center-align">
-          <h5>Plot:</h5>
-          <h6 id="movie-summary" class="col s12 card"></h6>
-        </div>
-        <div class="col s12">
-          <div class="">
-            <h6 id="info-rating"></h6>
-            <h6 id="info-genre"></h6>
-            <h6 id="info-director"></h6>
-            <h6 id="info-writer"></h6>
-            <h6 id="info-language"></h6>
-            <h6 id="info-released"></h6>
+      <div class="row left-align" id="infoRow">
+        <h4 class="col s12">Movie Info</h4>
+        <div class="row left-align">
+          <div class="row center-align">
+            <h5>Plot:</h5>
+            <h6 id="movie-summary" class="col s12 card"></h6>
+          </div>
+          <div class="col s12">
+            <div class="">
+              <h6 id="info-rating"></h6>
+              <h6 id="info-genre"></h6>
+              <h6 id="info-director"></h6>
+              <h6 id="info-writer"></h6>
+              <h6 id="info-language"></h6>
+              <h6 id="info-released"></h6>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Linking our script -->
-  <script src="./assets/js/trailer.js"></script>
+    <!-- Linking our script -->
+    <script src="./assets/js/trailer.js"></script>
 
-  <!-- Linking Materialize JS Library -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
-</body>
-
+    <!-- Linking Materialize JS Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  </body>
 </html>
