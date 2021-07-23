@@ -134,3 +134,7 @@ body {
 .row {
   padding-bottom: 10px;
 }
+
+.custom-sort{
+  background-color: var(--primary-site-color);
+}

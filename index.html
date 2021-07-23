@@ -51,7 +51,20 @@
 
             </div>
             <div class="col l8 m6 s12" id="topRatedDiv">
-                <!-- Currently dynamically populated by the javascript in search.js -->
+                
+               <div class="row">
+                <div class="input-field col s12 m6 l3 right z-depth-2 custom-sort">
+                    <select id="sort-menu">
+                      <option value="" disabled selected >Sort By</option>
+                      <option value="release_date.desc">Release Date </option>
+                      <option value="popularity.desc">popularity </option>
+                      <option value="revenue.desc">revenue </option>
+                      <option value="vote_average.desc">Rating </option>
+                    </select>
+                  </div>
+               </div>
+               
+               <!-- Currently dynamically populated by the javascript in search.js -->
                 <div id="top-rated" class="row"></div>
               </div>
         </main>
@@ -60,6 +73,9 @@
 
     <!-- Linking our script -->
     <script src="./assets/js/index.js"></script>
+
+      <!-- Linking Materialize JS Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 
 </body>

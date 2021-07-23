@@ -4,6 +4,39 @@ const TMDB_API_KEY = '35bedaf996a0d463f1f8fa5911ed61f8'
 // Single function call to set up webpage
 init();
 
+// Calls TMDb API to get top rated movies list
+function getTopRated(sortBy) {
+
+  // Starts a topMoviesRequest 
+  var topMoviesRequest;
+
+  // Checks if the storBy passes in parameter has a value of undefined
+  if (sortBy !== undefined) {
+
+    // if the storBy passes in parameter will inject it in the request url
+    topMoviesRequest = `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&include_adult=false&language=en-US&sort_by=${sortBy}&include_video=false&page=1`
+ 
+  } else {
+
+  // else it will us the default request url
+  topMoviesRequest = `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&include_adult=false&language=en-US&sort_by=popularity.desc&include_video=false&page=1`
+  }
+
+  // Makes an api call to the TMDB database
+  fetch(topMoviesRequest)
+
+    // Standard getting json from response
+    .then((response) => response.json())
+
+    // Return the actual data we care about
+    .then((data) => {
+
+      // Calls the renderTopRated and passing in the data retrieved 
+      renderTopRated(data)
+    })
+}
+
+
 // Call all set up functions inside here - event handlers, element creation, other page setup
 function init() {
 
@@ -76,7 +109,7 @@ function getTopRated() {
 function setupEventHandlers() {
 
   // Adds event handler for the search button
-  document.getElementById("searchButton").addEventListener("click", searchBarHandler);
+  document.getElementById("searchButton").addEventListener("click", handleSearchBar);
 
   // Adds event handler for an 'Enter' key on the search bar
   document.getElementById("searchInput").addEventListener("keyup", enterKeyHandler);
@@ -84,10 +117,12 @@ function setupEventHandlers() {
   // Adds event handler for clicking on a movie card "view" button
   document.getElementById("top-rated").addEventListener('click', handleTrailerLink);
 
+  // Addes event handler for sorting by a menu item
+  document.getElementById("sort-menu").addEventListener("change", handleSortMenu);
 }
 
 // Event handler for entering a search request 
-function searchBarHandler() {
+function handleSearchBar() {
 
   // Get the current value of the search text-input
   var searchTerm = document.getElementById("searchInput").value;
@@ -118,10 +153,24 @@ function handleTrailerLink(event) {
   }
 }
 
+// Event handler for sorting based on user's input
+function handleSortMenu(){
+
+  // Get value of the user's input
+  var sortBy = document.getElementById('sort-menu').value;
+  
+  // If the user actually clicked on one of the choices in the select menu, call function
+  if (sortBy) {
+
+    // Call the getTopRated and pass in the sortBy value 
+    getTopRated(sortBy)
+  }
+}
+
 // Event handler for entering a search request on the enter key
 function enterKeyHandler(event) {
   if (event.key === "Enter") {
-    searchBarHandler();
+    handleSearchBar();
   }
 };
 
@@ -130,17 +179,30 @@ function enterKeyHandler(event) {
 /////////////////////////////////////////////////////////////////////////////////////
 
 // The renderTopRated function renders a card for each of the topRated movies
-function renderTopRated(data) {
+function renderTopRated(data){
   // Gets the results array from the data and store it in a variable
   var topMovies = data.results;
-
+  // Starts the value of posterArt as an empty string
+  var posterArt = ""
+  // Emptys the top-rated div from early shown content
+  document.getElementById("top-rated").innerHTML = "";
+  
   for (var i = 0; i < topMovies.length; i++) {
+  // Checks if the data of each car has a path to a poster
+  if (topMovies[i].poster_path !== null) {
+    // If it has a path appends that poster to the TMDB url 
+    posterArt = `http://image.tmdb.org/t/p/w300${topMovies[i].poster_path}`;
+  } else {
+    // Else it will set it to a coming soon photo stored   
+    posterArt = `./assets/images/coming-soon.jpg`
+  }
+
     // Injects a card for each movie title with it's title, poster, release date etc
     document.getElementById("top-rated").innerHTML += `
     <div class="col s12 m6 l3">
       <div class="card large">
         <div class="card-image waves-effect waves-block waves-light">
-          <img class="activator" src="http://image.tmdb.org/t/p/w300${topMovies[i].poster_path}">
+          <img class="activator" src="${posterArt}">
         </div>
 
         <div class="card-content">
@@ -152,6 +214,6 @@ function renderTopRated(data) {
         </div>
       </div>
     </div>`;
-
+    console.log(topMovies[i])
   }
 }
