@@ -1,4 +1,4 @@
-# [Traileremma](https://willberner.github.io/Trailr/)
+# [Trailr](https://willberner.github.io/Trailr/)
 
 A Front-End web application for searching for movies. Users can search a movie by title, select which movie they're interested in, and view information about the movie such as its IMDB critic rating, trailer, runtime, if the movie is on Netflix to stream, and other related material.
 
@@ -14,18 +14,19 @@ A Front-End web application for searching for movies. Users can search a movie b
 * CSS
 * Javascript
 * Materialize CSS Library
-* Three APIs
+* Four APIs
   * Open Movie Database (OMDb) API
   * Google Youtube Data API v3
   * Streaming-Availability API via RapidAPI
+  * The Movie Database (TMDB) API
 
 ## Demo
 
-![Home Page](https://user-images.githubusercontent.com/25047954/126427617-47ccc29b-b25d-4905-a9e0-3fce2bd796ca.png)
+![Home Page]()
 
-![Results Page](https://user-images.githubusercontent.com/25047954/126427622-63bf6e71-1aa0-4b34-b2e6-1b1fadf6483f.png)
+![Results Page]()
 
-![Individual Movie Page](https://user-images.githubusercontent.com/25047954/126427669-8c6bb196-9ef8-47ad-ab08-e06ad3e00865.png)
+![Individual Movie Page]()
 
 ## Future functionality
 
