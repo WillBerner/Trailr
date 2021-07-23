@@ -5,8 +5,8 @@
 }
 
 #container {
-  height: 100vh;
   justify-content: center;
+  margin-top: 3rem;
 }
 
 #searchCard {

@@ -4,39 +4,6 @@ const TMDB_API_KEY = '35bedaf996a0d463f1f8fa5911ed61f8'
 // Single function call to set up webpage
 init();
 
-// Calls TMDb API to get top rated movies list
-function getTopRated(sortBy) {
-
-  // Starts a topMoviesRequest 
-  var topMoviesRequest;
-
-  // Checks if the storBy passes in parameter has a value of undefined
-  if (sortBy !== undefined) {
-
-    // if the storBy passes in parameter will inject it in the request url
-    topMoviesRequest = `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&include_adult=false&language=en-US&sort_by=${sortBy}&include_video=false&page=1`
- 
-  } else {
-
-  // else it will us the default request url
-  topMoviesRequest = `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&include_adult=false&language=en-US&sort_by=popularity.desc&include_video=false&page=1`
-  }
-
-  // Makes an api call to the TMDB database
-  fetch(topMoviesRequest)
-
-    // Standard getting json from response
-    .then((response) => response.json())
-
-    // Return the actual data we care about
-    .then((data) => {
-
-      // Calls the renderTopRated and passing in the data retrieved 
-      renderTopRated(data)
-    })
-}
-
-
 // Call all set up functions inside here - event handlers, element creation, other page setup
 function init() {
 
@@ -82,10 +49,22 @@ function saveSearchTerm(newSearchTerm) {
 /////////////////////////////////////////////////////////////////////////////////////
 
 // This function makes an API call to the TMDb API to get a list of top rated movies
-function getTopRated() {
+function getTopRated(sortBy) {
 
-  // Fetch request gets top rated movies
-  var topMoviesRequest = `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&language=en-US&sort_by=popularity.desc&include_video=false&page=1`
+  // Starts a topMoviesRequest 
+  var topMoviesRequest;
+
+  // Checks if the storBy passes in parameter has a value of undefined
+  if (sortBy !== undefined) {
+
+    // if the storBy passes in parameter will inject it in the request url
+    topMoviesRequest = `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&include_adult=false&language=en-US&sort_by=${sortBy}&include_video=false&page=1`
+ 
+  } else {
+
+  // else it will us the default request url
+  topMoviesRequest = `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&include_adult=false&language=en-US&sort_by=popularity.desc&include_video=false&page=1`
+  }
 
   // Makes an api call to the TMDB database
   fetch(topMoviesRequest)
@@ -93,13 +72,14 @@ function getTopRated() {
     // Standard getting json from response
     .then((response) => response.json())
 
-    // Return the actual data we care about (stored in result variable)
+    // Return the actual data we care about
     .then((data) => {
 
       // Calls the renderTopRated and passing in the data retrieved 
       renderTopRated(data)
     })
 }
+
 
 /////////////////////////////////////////////////////////////////////////////////////
 /////////////////// EVENT HANDLER FUNCTIONS /////////////////////////////////////////
@@ -167,6 +147,14 @@ function handleSortMenu(){
   }
 }
 
+// This function will add an event listener to the Dom content that is loaded 
+document.addEventListener('DOMContentLoaded', function() {
+  // Will assign the elems to all div with the class of select
+  var elems = document.querySelectorAll('select');
+      // Will initiate the drop down select menu
+  var instances = M.FormSelect.init(elems);
+});
+
 // Event handler for entering a search request on the enter key
 function enterKeyHandler(event) {
   if (event.key === "Enter") {
@@ -214,6 +202,6 @@ function renderTopRated(data){
         </div>
       </div>
     </div>`;
-    console.log(topMovies[i])
+    
   }
 }
