@@ -117,3 +117,7 @@ body {
 #plotRow {
   border-bottom: 10px solid black;
 }
+
+.custom-sort{
+  background-color: var(--primary-site-color);
+}

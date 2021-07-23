@@ -2,11 +2,18 @@
 const TMDB_API_KEY = '35bedaf996a0d463f1f8fa5911ed61f8'
 
 // Calls TMDb API to get top rated movies list
-function getTopRated() {
-
-  // Fetch request gets top rated movies
-  var topMoviesRequest = `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&language=en-US&sort_by=popularity.desc&include_video=false&page=1`
-
+function getTopRated(sortBy) {
+  // Starts a topMoviesRequest 
+  var topMoviesRequest;
+  // Checks if the storBy passes in parameter has a value of undefined
+  if (sortBy !== undefined) {
+    // if the storBy passes in parameter will inject it in the request url
+    topMoviesRequest = `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&include_adult=false&language=en-US&sort_by=${sortBy}&include_video=false&page=1`
+ 
+  } else {
+  // else it will us the default request url
+  topMoviesRequest = `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&include_adult=false&language=en-US&sort_by=popularity.desc&include_video=false&page=1`
+  }
   // Makes an api call to the TMDB database
   fetch(topMoviesRequest)
     // Standard getting json from response
@@ -70,6 +77,8 @@ function init() {
    // Adds event listener for clicking on a movie card view button
   document.getElementById("top-rated").addEventListener('click', viewButtonClickHandler);
 
+  document.getElementById("sort-menu").addEventListener("change", sortMenuHandler);
+
 }
 
 // Save a search term to localstorage
@@ -91,14 +100,27 @@ function saveSearchTerm(newSearchTerm) {
 function renderTopRated(data){
   // Gets the results array from the data and store it in a variable
   var topMovies = data.results;
+  // Starts the value of posterArt as an empty string
+  var posterArt = ""
+  // Emptys the top-rated div from early shown content
+  document.getElementById("top-rated").innerHTML = "";
   
   for (var i = 0; i < topMovies.length; i++) {
+  // Checks if the data of each car has a path to a poster
+  if (topMovies[i].poster_path !== null) {
+    // If it has a path appends that poster to the TMDB url 
+    posterArt = `http://image.tmdb.org/t/p/w300${topMovies[i].poster_path}`;
+  } else {
+    // Else it will set it to a coming soon photo stored   
+    posterArt = `./assets/images/coming-soon.jpg`
+  }
+
     // Injects a card for each movie title with it's title, poster, release date etc
     document.getElementById("top-rated").innerHTML += `
     <div class="col s12 m6 l3">
       <div class="card large">
         <div class="card-image waves-effect waves-block waves-light">
-          <img class="activator" src="http://image.tmdb.org/t/p/w300${topMovies[i].poster_path}">
+          <img class="activator" src="${posterArt}">
         </div>
 
         <div class="card-content">
@@ -110,7 +132,7 @@ function renderTopRated(data){
         </div>
       </div>
     </div>`;
-    
+    console.log(topMovies[i])
   }
 }
 
@@ -139,6 +161,17 @@ function viewButtonClickHandler(event){
   }
 }
 
+// This function gets the value of user's choice 
+function sortMenuHandler(){
+  // Get value of the user's input
+  var sortBy = document.getElementById('sort-menu').value;
+  // If the user actually clicked on one of the choices in the select menu, call function
+  if (sortBy) {
+    // Call the getTopRated and pass in the sortBy value 
+    getTopRated(sortBy)
+  }
+}
+
 // This handler will check if the key pressed was an enter key to accept the input
 function enterKeyHandler(event) {
   if (event.key === "Enter") {
@@ -146,8 +179,19 @@ function enterKeyHandler(event) {
   }
 };
 
+// This function will add an event listener to the Dom content that is loaded 
+document.addEventListener('DOMContentLoaded', function() {
+  // Will assign the elems to all div with the class of select
+  var elems = document.querySelectorAll('select');
+      // Will initiate the drop down select menu
+  var instances = M.FormSelect.init(elems);
+});
+
 // Single function call to set up webpage
 init();
+
+
+
 
 
 
