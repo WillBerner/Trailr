@@ -6,14 +6,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Linking custom CSS stylesheet -->
-  <link rel="stylesheet" href="./assets/css/style.css" />
-
   <!-- Linking Materialize Icons Library -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 
   <!-- Linking Materialize CSS Library -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+
+<!-- Linking custom CSS stylesheet last -->
+<link rel="stylesheet" href="./assets/css/style.css" />
 
   <title>Search Results</title>
 </head>
@@ -42,7 +42,7 @@
             <h5 id="menuTitle">Filter results</h5>
           </div>
 
-          <div class="container" id="filterContainer">
+          <div id="filterContainer">
 
             <div class="row">
               <div class="col 12 valign-wrapper">
@@ -51,12 +51,14 @@
               </div>
             </div>
 
-            <div class="row valign-wrapper">
-              <div class="input-field col s9">
-                <input id="filterByYearInput" type="text" class="validate" />
-                <label for="filterByYearInput">By Year</label>
+            <div class="row">
+              <div class="input-field col s12">
+                <h6>Filter by year</h6>
+                <select class="browser-default" id="sortByDateSelector">
+                  <option value="old">Older Movies First</option>
+                  <option value="new">Newer Movies First</option>
+                </select>
               </div>
-              <button class="col s3 btn" id="">Go</button>
             </div>
 
             <div class="row valign-wrapper">
