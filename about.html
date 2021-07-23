@@ -6,14 +6,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Linking custom CSS stylesheet -->
-  <link rel="stylesheet" href="./assets/css/style.css" />
-
   <!-- Linking Materialize Icons Library -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 
   <!-- Linking Materialize CSS Library -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+
+<!-- Linking custom CSS stylesheet last -->
+<link rel="stylesheet" href="./assets/css/style.css" />
 
   <title>About Us</title>
 </head>
@@ -23,8 +23,8 @@
   <header class="navbar-fixed">
     <nav id="navbar">
       <div class="nav-wrapper valign-wrapper">
-        <a class="brand-logo center">Trail<span class="cyan-text accent-3">r</span></a>
-        <ul id="backButton" class="left">
+        <a class="brand-logo center">Trail<span id="titleR">r</span></a>
+        <ul id="navButtons" class="left">
           <li><a href="./index.html">Back Home</a></li>
         </ul>
       </div>
@@ -58,6 +58,7 @@
       <div class="col s12 m10 offset-m1">
         <h1 class="center">About us</h1>
         <div class="row">
+
           <div class="col s12 m6 l3">
             <div class="card">
               <div class="card-image">
@@ -80,6 +81,7 @@
               </div>
             </div>
           </div>
+
           <div class="col s12 m6 l3">
             <div class="card">
               <div class="card-image">
@@ -102,25 +104,27 @@
                 </p>
               </div>
             </div>
-            <div class="col s12 m6 l3">
-              <div class="card">
-                <div class="card-image">
-                  <img src="https://ca.slack-edge.com/T021EL6S4CW-U0223K393PU-b22be940b0c8-512" />
-                  <span class="card-title names-style">Zach Holloway</span>
-                </div>
-                <div class="card-content">
-                  <p>
-                    I just like to know how things tic. As a young electrical engineer I regularly came across cases
-                    where the ability to develop web apps and aggregate API data would have been invaluable. This pushed
-                    me into teaching myself basic coding, which eventually evolved into the desire for a more formal
-                    foundation. This lead to my enrollment at UNC Chapel Hill Coding Bootcamp. I am truly looking
-                    forward to leveraging my previous knowledge and experience with the coding skills currently being
-                    developed in all future endeavors.<br><br><br>
-                  </p>
-                </div>
+          </div>
+
+          <div class="col s12 m6 l3">
+            <div class="card">
+              <div class="card-image">
+                <img src="https://ca.slack-edge.com/T021EL6S4CW-U0223K393PU-b22be940b0c8-512" />
+                <span class="card-title names-style">Zach Holloway</span>
+              </div>
+              <div class="card-content">
+                <p>
+                  I just like to know how things tic. As a young electrical engineer I regularly came across cases
+                  where the ability to develop web apps and aggregate API data would have been invaluable. This pushed
+                  me into teaching myself basic coding, which eventually evolved into the desire for a more formal
+                  foundation. This lead to my enrollment at UNC Chapel Hill Coding Bootcamp. I am truly looking
+                  forward to leveraging my previous knowledge and experience with the coding skills currently being
+                  developed in all future endeavors.<br><br><br>
+                </p>
               </div>
             </div>
           </div>
+
           <div class="col s12 m6 l3">
             <div class="card">
               <div class="card-image">
@@ -143,9 +147,11 @@
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </div>
+  </div>
   </div>
   <div class="parallax-container">
     <div class="parallax">
@@ -153,11 +159,11 @@
     </div>
   </div>
 
-  <footer class="page-footer blue-grey darken-1">
+  <footer class="page-footer">
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
-          <h5 class="white-text">Trail<span class="cyan-text accent-3">r</h5>
+          <h5 class="white-text">Trail<span id="titleR">r</h5>
           <p class="grey-text text-lighten-4">
             Your next movie hunt starts here!
           </p>
@@ -183,7 +189,7 @@
       </div>
     </div>
     <div class="footer-copyright">
-      <div class="container">© 2021 Trail<span class="cyan-text accent-3">r</div>
+      <div class="container">© 2021 Trail<span id="titleR" >r</div>
     </div>
   </footer>
 
