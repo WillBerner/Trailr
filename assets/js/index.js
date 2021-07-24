@@ -62,11 +62,11 @@ function getTopRated(sortBy) {
 
     // if the storBy passes in parameter will inject it in the request url
     topMoviesRequest = `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&include_adult=false&language=en-US&sort_by=${sortBy}&include_video=false&page=1`
- 
+
   } else {
 
-  // else it will us the default request url
-  topMoviesRequest = `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&include_adult=false&language=en-US&sort_by=popularity.desc&include_video=false&page=1`
+    // else it will use the default request url
+    topMoviesRequest = `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&include_adult=false&language=en-US&sort_by=popularity.desc&include_video=false&page=1`
   }
 
   // Makes an api call to the TMDB database
@@ -82,7 +82,6 @@ function getTopRated(sortBy) {
       renderTopRated(data)
     })
 }
-
 
 /////////////////////////////////////////////////////////////////////////////////////
 /////////////////// EVENT HANDLER FUNCTIONS /////////////////////////////////////////
@@ -137,11 +136,11 @@ function handleTrailerLink(event) {
 }
 
 // Event handler for sorting based on user's input
-function handleSortMenu(){
+function handleSortMenu() {
 
   // Get value of the user's input
   var sortBy = document.getElementById('sort-menu').value;
-  
+
   // If the user actually clicked on one of the choices in the select menu, call function
   if (sortBy) {
 
@@ -151,10 +150,12 @@ function handleSortMenu(){
 }
 
 // This function will add an event listener to the Dom content that is loaded 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
+
   // Will assign the elems to all div with the class of select
   var elems = document.querySelectorAll('select');
-      // Will initiate the drop down select menu
+
+  // Will initiate the drop down select menu
   var instances = M.FormSelect.init(elems);
 });
 
@@ -170,23 +171,32 @@ function enterKeyHandler(event) {
 /////////////////////////////////////////////////////////////////////////////////////
 
 // The renderTopRated function renders a card for each of the topRated movies
-function renderTopRated(data){
+function renderTopRated(data) {
+
   // Gets the results array from the data and store it in a variable
   var topMovies = data.results;
+
   // Starts the value of posterArt as an empty string
   var posterArt = ""
+
   // Emptys the top-rated div from early shown content
   document.getElementById("top-rated").innerHTML = "";
-  
+
   for (var i = 0; i < topMovies.length; i++) {
-  // Checks if the data of each car has a path to a poster
-  if (topMovies[i].poster_path !== null) {
-    // If it has a path appends that poster to the TMDB url 
-    posterArt = `http://image.tmdb.org/t/p/w300${topMovies[i].poster_path}`;
-  } else {
-    // Else it will set it to a coming soon photo stored   
-    posterArt = `./assets/images/coming-soon.jpg`
-  }
+
+    // Checks if the data of each car has a path to a poster
+    if (topMovies[i].poster_path !== null) {
+
+      // If it has a path appends that poster to the TMDB url 
+      posterArt = `http://image.tmdb.org/t/p/w300${topMovies[i].poster_path}`;
+    } else {
+
+      // Else it will set it to a coming soon photo stored   
+      posterArt = `./assets/images/coming-soon.jpg`
+    }
+
+    // Format date nicely to display
+    var date = moment(topMovies[i].release_date).format("MMMM Do, YYYY");
 
     // Injects a card for each movie title with it's title, poster, release date etc
     document.getElementById("top-rated").innerHTML += `
@@ -197,14 +207,14 @@ function renderTopRated(data){
         </div>
 
         <div class="card-content">
-          <h6 class="grey-text text-darken-4">${topMovies[i].title}</h6>
-          <h6>Release Date: ${topMovies[i].release_date}</h6>
+          <h6 class="grey-text text-darken-4 movieTitleEl">${topMovies[i].title}</h6>
+          <h6>${date}</h6>
         </div>
         <div class="card-action trailerLink center-align">
           <a data-title="${topMovies[i].title}" class="blue-text" href="#">View</a>
         </div>
       </div>
     </div>`;
-    
+
   }
 }

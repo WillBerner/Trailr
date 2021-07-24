@@ -2,30 +2,46 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Linking Materialize CSS Library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- Linking Materialize CSS Library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-    <!-- Linking custom CSS stylesheet -->
-    <link rel="stylesheet" href="./assets/css/style.css">
+  <!-- Linking custom CSS stylesheet -->
+  <link rel="stylesheet" href="./assets/css/style.css">
 
-    <title>Homepage</title>
+  <title>Homepage</title>
 
 </head>
 
 <body>
 
-    <!-- Header Element -->
-    <header class="navbar-fixed">
-        <nav id="navbar">
-            <div class="nav-wrapper valign-wrapper">
-                <a class="brand-logo center">Trail<span id="titleR">r</a>
-                <ul id="navButtons" class="right">
-                    <li><a href="./about.html">About Us</a></li>
-                </ul>
+  <!-- Header Element -->
+  <header class="navbar-fixed">
+    <nav id="navbar">
+      <div class="nav-wrapper valign-wrapper">
+        <a class="brand-logo center">Trail<span id="titleR">r</a>
+        <ul id="navButtons" class="right">
+          <li><a href="./about.html">About Us</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+
+
+  <main class="container">
+    <div class="valign-wrapper" id="container">
+
+      <div class="card" id="searchCard">
+        <div class="card-action">
+          <div class="row">
+            <h5 class="white-text">Search for Movies:</h5>
+            <div class="input-field col s12">
+              <!-- Text Input -->
+              <input placeholder="Movie title" type="text" id="searchInput">
             </div>
         </nav>
     </header>
@@ -110,6 +126,8 @@
       <!-- Linking Materialize JS Library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
+  <!-- Linking Moment.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 
 </body>
 

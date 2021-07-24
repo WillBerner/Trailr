@@ -7,6 +7,7 @@
 #container {
   justify-content: center;
   margin-top: 3rem;
+  height: 100vh;
 }
 
 #searchCard {
@@ -40,6 +41,11 @@ body {
 
 #menuCard {
   border-radius: 20px;
+}
+
+#sortContainer {
+  justify-content: center;
+  margin-bottom: 40px;
 }
 
 #resultsDiv {
@@ -146,4 +152,12 @@ ul.dropdown-content.select-dropdown li span {
     color: white;
 }
 
+.movieTitleEl {
+  font-weight: 500;
+}
 
+.custom-sort {
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
