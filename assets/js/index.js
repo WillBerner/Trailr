@@ -56,6 +56,9 @@ function getTopRated(sortBy) {
 
   // Checks if the storBy passes in parameter has a value of undefined
   if (sortBy !== undefined) {
+    if(sortBy === "release_date.desc") {
+      sortBy = "popularity.desc&primary_release_date.gte=2021-12-31";
+    } 
 
     // if the storBy passes in parameter will inject it in the request url
     topMoviesRequest = `https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&include_adult=false&language=en-US&sort_by=${sortBy}&include_video=false&page=1`
