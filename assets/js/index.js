@@ -170,6 +170,7 @@ function enterKeyHandler(event) {
 function renderTopRated(data){
   // Gets the results array from the data and store it in a variable
   var topMovies = data.results;
+  console.log(topMovies)
   // Starts the value of posterArt as an empty string
   var posterArt = ""
   // Emptys the top-rated div from early shown content
