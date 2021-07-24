@@ -29,86 +29,82 @@
       </div>
     </nav>
   </header>
+        <main class="container">
+            <div class="valign-wrapper" id="container">
 
-
-
-  <main class="container">
-    <div class="valign-wrapper" id="container">
-
-      <div class="card" id="searchCard">
-        <div class="card-action">
-          <div class="row">
-            <h5 class="white-text">Search for Movies:</h5>
-            <div class="input-field col s12">
-              <!-- Text Input -->
-              <input placeholder="Movie title" type="text" id="searchInput">
-            </div>
+                <div class="card" id="searchCard">
+                    <div class="card-action">
+                        <div class="row">
+                            <h5 class="white-text">Search for Movies:</h5>
+                            <div class="input-field col s12">
+                                <!-- Text Input -->
+                                <input placeholder="Movie title" type="text" id="searchInput">
+                          </div>
             <!-- Search Button -->
             <a class="waves-effect waves-light btn btn-large" id="searchButton">Search</a>
           </div>
         </div>
       </div>
 
-    </div>
-    
-    <div class="valign-wrapper" id="sortContainer">
-      
-      <div class="input-field col s12 m6 l3 right z-depth-2 custom-sort center-align">
-        <h5 class="movieTitleEl white-text">Sort</h5>
-        <select id="sort-menu">
-          <option value="popularity.desc">Popularity </option>
-          <option value="release_date.desc">Release Date </option>
-          <option value="revenue.desc">Revenue </option>
-          <option value="vote_average.desc">Rating </option>
-        </select>
-      </div>
-    </div>
-    <div class="col l8 m6 s12" id="topRatedDiv">
+            </div>
+            <div class="col l8 m6 s12" id="topRatedDiv">
+                
+               <div class="row">
+                <div class="input-field col s12 m6 l3 right z-depth-2 custom-sort">
+                    <select id="sort-menu">
+                      <option value="" disabled selected >Sort By</option>
+                      <option value="popularity.desc">popularity </option>
+                      <option value="release_date.desc">Release Date </option>
+                      <option value="revenue.desc">revenue </option>
+                      <option value="vote_count.desc">Rating </option>
+                    </select>
+                  </div>
+               </div>
+               
+               <!-- Currently dynamically populated by the javascript in search.js -->
+                <div id="top-rated" class="row"></div>
+              </div>
+        </main>
+        <footer class="page-footer">
+            <div class="container">
+              <div class="row">
+                <div class="col l6 s12">
+                  <h5 class="white-text">Trail<span id="titleR">r</h5>
+                  <p class="grey-text text-lighten-4">
+                    Your next movie hunt starts here!
+                  </p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                  <h5 class="white-text">Contributors</h5>
+                  <ul>
+                    <li>
+                      <a target="_blank" class="grey-text text-lighten-3" href="https://github.com/WillBerner">Will Berner</a>
+                    </li>
+                    <li>
+                      <a target="_blank" class="grey-text text-lighten-3" href="https://github.com/Muiasar-Al-Ani">Muiasar Al
+                        Ani</a>
+                    </li>
+                    <li>
+                      <a target="_blank" class="grey-text text-lighten-3" href="https://github.com/ElusiveSkies">Casey Twine</a>
+                    </li>
+                    <li>
+                      <a target="_blank" class="grey-text text-lighten-3" href="https://github.com/Zach-EE">Zach Holloway</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="footer-copyright">
+              <div class="container">© 2021 Trail<span id="titleR" >r</div>
+            </div>
+          </footer>
 
-      <!-- Currently dynamically populated by the javascript in search.js -->
-      <div id="top-rated" class="row"></div>
-    </div>
-  </main>
-  <footer class="page-footer">
-    <div class="container">
-      <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">Trail<span id="titleR">r</h5>
-          <p class="grey-text text-lighten-4">
-            Your next movie hunt starts here!
-          </p>
-        </div>
-        <div class="col l4 offset-l2 s12">
-          <h5 class="white-text">Contributors</h5>
-          <ul>
-            <li>
-              <a target="_blank" class="grey-text text-lighten-3" href="https://github.com/WillBerner">Will Berner</a>
-            </li>
-            <li>
-              <a target="_blank" class="grey-text text-lighten-3" href="https://github.com/Muiasar-Al-Ani">Muiasar Al
-                Ani</a>
-            </li>
-            <li>
-              <a target="_blank" class="grey-text text-lighten-3" href="https://github.com/ElusiveSkies">Casey Twine</a>
-            </li>
-            <li>
-              <a target="_blank" class="grey-text text-lighten-3" href="https://github.com/Zach-EE">Zach Holloway</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="footer-copyright">
-      <div class="container">© 2021 Trail<span id="titleR">r</div>
-    </div>
-  </footer>
+   
 
+    <!-- Linking our script -->
+    <script src="./assets/js/index.js"></script>
 
-
-  <!-- Linking our script -->
-  <script src="./assets/js/index.js"></script>
-
-  <!-- Linking Materialize JS Library -->
+      <!-- Linking Materialize JS Library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
   <!-- Linking Moment.js -->
