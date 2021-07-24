@@ -55,7 +55,7 @@ function renderPosterCards(data) {
 
     // Injects a card for each movie title with it's title, poster, year, actors etc
     document.getElementById("results").innerHTML += `
-       <div class="col s12 m6 l3">
+       <div class="col s12 m6 l3 card-visibility" data-r-rate="${data.Rated}">
         <div class="card large">
         <div class="card-image waves-effect waves-block waves-light">
           <img class="activator" src="${data.Poster}">
@@ -151,6 +151,9 @@ function setupEventHandlers() {
   // Adds event listener to handle sorting by year
   document.getElementById("sortByDateSelector").addEventListener('change', handleSortByYear);
 
+  //Adds event listener to handle not showing R rated movies
+  document.getElementById("filterByRRatedInput").addEventListener('change', cardRRatedVisibility)
+
 }
 
 // Event handler for selecting to sort by year
@@ -192,6 +195,7 @@ function handleTrailerLink(event) {
   }
 }
 
+
 /////////////////////////////////////////////////////////////////////////////////////
 /////////////////// SORTING AND FILTERING FUNCTIONS /////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////
@@ -224,4 +228,23 @@ function sortbyDateOlderFirst() {
 
   // Return the sorted array
   return result;
+}
+
+// This function will hide or show movie card based on the checkbox marked by the user
+function cardRRatedVisibility(){
+
+  // This will return an array with all of the cards that share the same class name
+  // and perform a function on each returned card(element)
+  document.querySelectorAll('.card-visibility').forEach(card => {
+      // Checks if the data attribute r-rate is equal to "R"
+      if(card.getAttribute('data-r-rate') === "R" &&
+      // AND the checkbox for the "R" rate has been checked by the user
+       document.getElementById('filterByRRatedInput').checked){
+         // Sets the cards display property to be invisible
+        card.style.display = "none";
+      } else {
+        // Else it sets the display property to be visible 
+        card.style.display = "block";
+      }
+ })
 }
