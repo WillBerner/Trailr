@@ -20,9 +20,6 @@ async function init() {
   // Set up event handlers for the page
   setupEventHandlers();
 
-  // Adds a random "movies" background
-  document.body.style.backgroundImage = `url('https://source.unsplash.com/1600x900/?movie')`;
-
   // Checks if Api call returned results object - if results is null, it means that the movie was not found
   if (results) {
 
