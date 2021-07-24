@@ -143,5 +143,7 @@ ul.dropdown-content.select-dropdown li span {
   color: var(--primary-site-color);
 }
 .select-dropdown{
-    color: var(--button-color);
+    color: white;
 }
+
+
