@@ -62,7 +62,7 @@ function renderPosterCards(data) {
         </div>
 
         <div class="card-content">
-          <h6 class="grey-text text-darken-4">${data.Title}: ${data.Year}</h6>
+          <h6 class="grey-text text-darken-4 movieTitleEl">${data.Title}: ${data.Year}</h6>
           <h6 > ${data.Runtime} </h6>
         </div>
         <div class="card-action trailerLink center-align">
@@ -239,13 +239,18 @@ function cardRRatedVisibility(){
   // This will return an array with all of the cards that share the same class name
   // and perform a function on each returned card(element)
   document.querySelectorAll('.card-visibility').forEach(card => {
+
       // Checks if the data attribute r-rate is equal to "R"
       if(card.getAttribute('data-r-rate') === "R" &&
+
       // AND the checkbox for the "R" rate has been checked by the user
        document.getElementById('filterByRRatedInput').checked){
+
          // Sets the cards display property to be invisible
         card.style.display = "none";
+        
       } else {
+
         // Else it sets the display property to be visible 
         card.style.display = "block";
       }
