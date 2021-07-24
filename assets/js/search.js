@@ -71,6 +71,9 @@ function renderPosterCards(data) {
       </div>
       </div>`;
   }
+  // Calls the cardRRatedVisibility function so after every cards render  
+  // So make the cards with the R rating either visible or invisible dependant on the checkbox
+  cardRRatedVisibility();
 };
 
 /////////////////////////////////////////////////////////////////////////////////////
