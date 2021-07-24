@@ -188,7 +188,7 @@ function renderTopRated(data) {
     if (topMovies[i].poster_path !== null) {
 
       // If it has a path appends that poster to the TMDB url 
-      posterArt = `http://image.tmdb.org/t/p/w300${topMovies[i].poster_path}`;
+      posterArt = `https://image.tmdb.org/t/p/w300${topMovies[i].poster_path}`;
     } else {
 
       // Else it will set it to a coming soon photo stored   
