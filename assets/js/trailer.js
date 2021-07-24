@@ -185,6 +185,9 @@ function renderRatingColor(score) {
   if (score == "N/A") {
     document.getElementById("rating").style.color = "Black";
     return;
+  } else if (score == undefined) {
+    document.getElementById("rating").style.color = "Black";
+    document.getElementById("rating").innerText = "N/A";
   }
 
   if (score >= 8) {
