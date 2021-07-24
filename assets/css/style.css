@@ -1,4 +1,5 @@
 /* Used to center searchbar - temporary, just to demonstrate functionality */
+
 :root {
   --primary-site-color: #004987;
   --button-color: #00eaff;
@@ -13,6 +14,10 @@
 #searchCard {
   width: 70%;
   background-color: var(--primary-site-color);
+}
+
+.card-image {
+  height: 100%;
 }
 
 iframe {
@@ -32,10 +37,10 @@ body {
   color: var(--button-color);
 }
 
-#netflix,
-#imdb {
+#netflix, #imdb {
   display: none;
 }
+
 #menuCardRow {
   margin-left: 2%;
 }
@@ -87,7 +92,6 @@ body {
 #rating-card {
   border-radius: 10px;
   margin: 20px;
-
   padding: 10px;
   padding-bottom: 20px;
   padding-top: 20px;
@@ -110,7 +114,7 @@ body {
 }
 
 .card-action a {
-    margin-right: 0 !important;
+  margin-right: 0 !important;
 }
 
 #contentRow {
@@ -142,15 +146,16 @@ body {
   padding-bottom: 10px;
 }
 
-.custom-sort{
+.custom-sort {
   background-color: var(--primary-site-color);
 }
 
 ul.dropdown-content.select-dropdown li span {
   color: var(--primary-site-color);
 }
-.select-dropdown{
-    color: white;
+
+.select-dropdown {
+  color: white;
 }
 
 .movieTitleEl {
@@ -161,4 +166,9 @@ ul.dropdown-content.select-dropdown li span {
   padding: 10px;
   padding-left: 20px;
   padding-right: 20px;
+}
+
+.activator {
+  height: 100%;
+  width: 100%;
 }
