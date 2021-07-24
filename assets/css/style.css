@@ -1,6 +1,6 @@
 /* Used to center searchbar - temporary, just to demonstrate functionality */
 :root {
-  --primary-site-color: orangered;
+  --primary-site-color: #004987;
   --button-color: #00eaff;
 }
 
@@ -25,6 +25,7 @@ body {
 
 .btn, button {
   background-color: var(--button-color) !important;
+  color: var(--primary-site-color);
 }
 
 #titleR {
