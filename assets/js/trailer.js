@@ -76,9 +76,7 @@ function servicesLinkGetter(data) {
     },
   })
     // Gets a JSON object containing the data needed
-    .then((response) => {
-      if(response.ok){
-      response.json()}})
+    .then((response) => response.json())
 
     // Once gets the data calls makeLinks function and passing in the data
     .then((data) => renderLinks(data))
