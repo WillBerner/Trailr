@@ -245,6 +245,17 @@ function handleServices(event) {
 // Event listener to redirect the user to the previous search page
 function handleBackButton() {
 
+  // Get pathname to check for page reloads
+  var url = new URL(document.referrer)
+  var pathname = url.pathname;
+
+  // If user came from the homescreen, redirect back to home
+  if (pathname == "/") {
+
+    window.location = `./`;
+    return;
+  } 
+
   // Get the most recently searched term
   var lastSearchedTerm = localStorage.getItem("prevSearchTerm");
 
