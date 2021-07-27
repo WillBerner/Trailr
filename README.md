@@ -21,8 +21,6 @@ A Front-End web application for searching for movies. Users can search a movie b
   * Streaming-Availability API via RapidAPI
   * The Movie Database (TMDB) API
 
-## Demo
-
 ## Future functionality
 
 - [x] Update CSS for greater mobile responsiveness and compatibility.
